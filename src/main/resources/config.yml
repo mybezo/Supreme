@@ -339,42 +339,42 @@ supreme-enchant:
     looting: 5
     fire_aspect: 3
     mending: 7
-    lunge: 1
+    lunge: 3
   supreme_spear_magic:
     unbreakable: true
     sharpness: 16
     looting: 6
     fire_aspect: 6
     mending: 10
-    lunge: 1
+    lunge: 5
   supreme_spear_rare:
     unbreakable: true
     sharpness: 24
     looting: 8
     fire_aspect: 8
     mending: 10
-    lunge: 2
+    lunge: 8
   supreme_spear_epic:
     unbreakable: true
     sharpness: 33
     looting: 10
     fire_aspect: 10
     mending: 15
-    lunge: 2
+    lunge: 12
   supreme_spear_legendary:
     unbreakable: true
     sharpness: 40
     looting: 15
     fire_aspect: 15
     mending: 15
-    lunge: 3
+    lunge: 16
   supreme_spear_supreme:
     unbreakable: true
     sharpness: 50
     looting: 20
     fire_aspect: 20
     mending: 20
-    lunge: 3
+    lunge: 20
   supreme_bow_thornium:
     unbreakable: true
     power: 7
