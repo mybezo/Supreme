@@ -115,6 +115,24 @@ public class AbstractTools extends SlimefunItem implements Soulbound, NotPlaceab
         ItemTier.getSupremeRecipe(ToolsThornium.THORNIUM_SHOVEL_LEGENDARY));
     shovelSupreme.register(sup);
 
+    // fishing rod set
+    EnchantsAndEffectsUtil.addGearBasicEnchants(ToolsBasic.TITANIUM_FISHING_ROD, ToolsBasic.AURUM_FISHING_ROD,
+        ToolsBasic.ADAMANTIUM_FISHING_ROD);
+    EnchantsAndEffectsUtil.addGearThorniumEnchants(ToolsThornium.THORNIUM_FISHING_ROD,
+        ToolsThornium.THORNIUM_FISHING_ROD_MAGIC, ToolsThornium.THORNIUM_FISHING_ROD_RARE,
+        ToolsThornium.THORNIUM_FISHING_ROD_EPIC, ToolsThornium.THORNIUM_FISHING_ROD_LEGENDARY,
+        ToolsThornium.THORNIUM_FISHING_ROD_SUPREME);
+
+    new AbstractTools(ToolsBasic.TITANIUM_FISHING_ROD, ToolsBasic.RECIPE_TITANIUM_FISHING_ROD).register(sup);
+    new AbstractTools(ToolsBasic.AURUM_FISHING_ROD, ToolsBasic.RECIPE_AURUM_FISHING_ROD).register(sup);
+    new AbstractTools(ToolsBasic.ADAMANTIUM_FISHING_ROD, ToolsBasic.RECIPE_ADAMANTIUM_FISHING_ROD).register(sup);
+    new AbstractTools(ToolsThornium.THORNIUM_FISHING_ROD, ToolsThornium.RECIPE_THORNIUM_FISHING_ROD).register(sup);
+    new AbstractTools(ToolsThornium.THORNIUM_FISHING_ROD_MAGIC, ItemTier.getMagicRecipe(ToolsThornium.THORNIUM_FISHING_ROD)).register(sup);
+    new AbstractTools(ToolsThornium.THORNIUM_FISHING_ROD_RARE, ItemTier.getRareRecipe(ToolsThornium.THORNIUM_FISHING_ROD_MAGIC)).register(sup);
+    new AbstractTools(ToolsThornium.THORNIUM_FISHING_ROD_EPIC, ItemTier.getEpicRecipe(ToolsThornium.THORNIUM_FISHING_ROD_RARE)).register(sup);
+    new AbstractTools(ToolsThornium.THORNIUM_FISHING_ROD_LEGENDARY, ItemTier.getLegendaryRecipe(ToolsThornium.THORNIUM_FISHING_ROD_EPIC)).register(sup);
+    new AbstractTools(ToolsThornium.THORNIUM_FISHING_ROD_SUPREME, ItemTier.getSupremeRecipe(ToolsThornium.THORNIUM_FISHING_ROD_LEGENDARY)).register(sup);
+
     if (getSupremeOptions().isEnableTech()) {
       MobCollectorTools.setup(sup);
     }

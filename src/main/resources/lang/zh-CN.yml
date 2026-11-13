@@ -352,6 +352,60 @@ items:
       - "&f&l钍制的至尊之剑"
       - ""
       - "&3至尊武器"
+  supreme_titanium_spear:
+    name: "&f&l钛合金长矛"
+    lore:
+      - "&f&l钛合金制的长矛"
+      - ""
+      - "&3至尊武器"
+  supreme_aurum_spear:
+    name: "&f&l古金长矛"
+    lore:
+      - "&f&l古金制的长矛"
+      - ""
+      - "&3至尊武器"
+  supreme_adamantium_spear:
+    name: "&f&l精金长矛"
+    lore:
+      - "&f&l精金制的长矛"
+      - ""
+      - "&3至尊武器"
+  supreme_spear_thornium:
+    name: "&f&l钍合金长矛"
+    lore:
+      - "&f&l钍合金制的长矛"
+      - ""
+      - "&3至尊武器"
+  supreme_spear_magic:
+    name: "&a&l魔法长矛"
+    lore:
+      - "&f&l钍合金制的魔法长矛"
+      - ""
+      - "&3至尊武器"
+  supreme_spear_rare:
+    name: "&b&l稀有长矛"
+    lore:
+      - "&f&l钍合金制的稀有长矛"
+      - ""
+      - "&3至尊武器"
+  supreme_spear_epic:
+    name: "&d&l史诗长矛"
+    lore:
+      - "&f&l钍合金制的史诗长矛"
+      - ""
+      - "&3至尊武器"
+  supreme_spear_legendary:
+    name: "&6&l传说长矛"
+    lore:
+      - "&f&l钍合金制的传说长矛"
+      - ""
+      - "&3至尊武器"
+  supreme_spear_supreme:
+    name: "&4&l至尊长矛"
+    lore:
+      - "&f&l钍合金制的至尊长矛"
+      - ""
+      - "&3至尊武器"
   supreme_adamantium_axe:
     name: "&f&l精金斧"
     lore:
@@ -512,6 +566,60 @@ items:
     name: "&4&l至尊锹"
     lore:
       - "&f&l至尊的终极之锹"
+      - ""
+      - "&3至尊工具"
+  supreme_titanium_fishing_rod:
+    name: "&f&l钛合金钓鱼竿"
+    lore:
+      - "&f&l钛合金制的钓鱼竿"
+      - ""
+      - "&3至尊工具"
+  supreme_aurum_fishing_rod:
+    name: "&f&l古金钓鱼竿"
+    lore:
+      - "&f&l古金制的钓鱼竿"
+      - ""
+      - "&3至尊工具"
+  supreme_adamantium_fishing_rod:
+    name: "&f&l精金钓鱼竿"
+    lore:
+      - "&f&l精金制的钓鱼竿"
+      - ""
+      - "&3至尊工具"
+  supreme_fishing_rod_thornium:
+    name: "&f&l钍合金钓鱼竿"
+    lore:
+      - "&f&l钍合金制的钓鱼竿"
+      - ""
+      - "&3至尊工具"
+  supreme_fishing_rod_magic:
+    name: "&a&l魔法钓鱼竿"
+    lore:
+      - "&f&l钍合金制的魔法钓鱼竿"
+      - ""
+      - "&3至尊工具"
+  supreme_fishing_rod_rare:
+    name: "&b&l稀有钓鱼竿"
+    lore:
+      - "&f&l钍合金制的稀有钓鱼竿"
+      - ""
+      - "&3至尊工具"
+  supreme_fishing_rod_epic:
+    name: "&d&l史诗钓鱼竿"
+    lore:
+      - "&f&l钍合金制的史诗钓鱼竿"
+      - ""
+      - "&3至尊工具"
+  supreme_fishing_rod_legendary:
+    name: "&6&l传说钓鱼竿"
+    lore:
+      - "&f&l钍合金制的传说钓鱼竿"
+      - ""
+      - "&3至尊工具"
+  supreme_fishing_rod_supreme:
+    name: "&4&l至尊钓鱼竿"
+    lore:
+      - "&f&l钍合金制的至尊钓鱼竿"
       - ""
       - "&3至尊工具"
   supreme_mob_collector_tool_i:

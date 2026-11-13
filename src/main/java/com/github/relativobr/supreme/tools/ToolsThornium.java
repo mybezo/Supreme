@@ -1,6 +1,7 @@
 package com.github.relativobr.supreme.tools;
 
 import com.github.relativobr.supreme.resource.SupremeComponents;
+import com.github.relativobr.supreme.resource.core.SupremeCoreDeath;
 import com.github.relativobr.supreme.resource.magical.SupremeCetrus;
 import com.github.relativobr.supreme.util.SupremeItemStack;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
@@ -73,4 +74,25 @@ public class ToolsThornium {
 
   public static final SlimefunItemStack THORNIUM_SHOVEL_SUPREME = new SupremeItemStack("SUPREME_SHOVEL_SUPREME",
       Material.NETHERITE_SHOVEL);
+
+  public static final SlimefunItemStack THORNIUM_FISHING_ROD = new SupremeItemStack("SUPREME_FISHING_ROD_THORNIUM",
+      Material.FISHING_ROD);
+  public static final ItemStack[] RECIPE_THORNIUM_FISHING_ROD = {null, null, SupremeComponents.THORNIUM_INGOT, null,
+      SupremeCetrus.CETRUS_AQUA, SupremeCoreDeath.RESOURCE_CORE_STRING, SlimefunItems.STAFF_ELEMENTAL, null,
+      SupremeCoreDeath.RESOURCE_CORE_STRING};
+
+  public static final SlimefunItemStack THORNIUM_FISHING_ROD_MAGIC = new SupremeItemStack(
+      "SUPREME_FISHING_ROD_MAGIC", Material.FISHING_ROD);
+
+  public static final SlimefunItemStack THORNIUM_FISHING_ROD_RARE = new SupremeItemStack(
+      "SUPREME_FISHING_ROD_RARE", Material.FISHING_ROD);
+
+  public static final SlimefunItemStack THORNIUM_FISHING_ROD_EPIC = new SupremeItemStack(
+      "SUPREME_FISHING_ROD_EPIC", Material.FISHING_ROD);
+
+  public static final SlimefunItemStack THORNIUM_FISHING_ROD_LEGENDARY = new SupremeItemStack(
+      "SUPREME_FISHING_ROD_LEGENDARY", Material.FISHING_ROD);
+
+  public static final SlimefunItemStack THORNIUM_FISHING_ROD_SUPREME = new SupremeItemStack(
+      "SUPREME_FISHING_ROD_SUPREME", Material.FISHING_ROD);
 }

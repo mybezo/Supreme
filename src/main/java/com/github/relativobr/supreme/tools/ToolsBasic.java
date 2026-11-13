@@ -59,4 +59,22 @@ public final class ToolsBasic {
       Material.DIAMOND_SHOVEL);
   public static final ItemStack[] RECIPE_TITANIUM_SHOVEL = {null, SupremeComponents.TITANIUM_PLATE, null, null,
       new ItemStack(Material.STICK), null, null, new ItemStack(Material.STICK), null};
+
+  public static final SlimefunItemStack TITANIUM_FISHING_ROD = new SupremeItemStack("SUPREME_TITANIUM_FISHING_ROD",
+      Material.FISHING_ROD);
+  public static final ItemStack[] RECIPE_TITANIUM_FISHING_ROD = {null, null, SupremeComponents.TITANIUM_PLATE, null,
+      new ItemStack(Material.STICK), new ItemStack(Material.STRING), new ItemStack(Material.STICK), null,
+      new ItemStack(Material.STRING)};
+
+  public static final SlimefunItemStack AURUM_FISHING_ROD = new SupremeItemStack("SUPREME_AURUM_FISHING_ROD",
+      Material.FISHING_ROD);
+  public static final ItemStack[] RECIPE_AURUM_FISHING_ROD = {null, null, SupremeComponents.AURUM_PLATE, null,
+      new ItemStack(Material.STICK), new ItemStack(Material.STRING), new ItemStack(Material.STICK), null,
+      new ItemStack(Material.STRING)};
+
+  public static final SlimefunItemStack ADAMANTIUM_FISHING_ROD = new SupremeItemStack("SUPREME_ADAMANTIUM_FISHING_ROD",
+      Material.FISHING_ROD);
+  public static final ItemStack[] RECIPE_ADAMANTIUM_FISHING_ROD = {null, null, SupremeComponents.ADAMANTIUM_PLATE, null,
+      new ItemStack(Material.STICK), new ItemStack(Material.STRING), new ItemStack(Material.STICK), null,
+      new ItemStack(Material.STRING)};
 }

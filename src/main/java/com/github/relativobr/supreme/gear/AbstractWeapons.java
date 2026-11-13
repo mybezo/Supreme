@@ -9,6 +9,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Soulbound;
+import java.util.logging.Level;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 import org.bukkit.inventory.ItemStack;
@@ -99,5 +100,30 @@ public class AbstractWeapons extends SlimefunItem implements Soulbound, NotPlace
     final AbstractWeapons shieldSupreme = new AbstractWeapons(WeaponsThornium.THORNIUM_SHIELD_SUPREME,
         ItemTier.getSupremeRecipe(WeaponsThornium.THORNIUM_SHIELD_LEGENDARY));
     shieldSupreme.register(sup);
+
+    // spear set (Minecraft 1.21.11+)
+    if (SpearSupport.isSupported()) {
+      setupSpears(sup);
+    } else {
+      sup.log(Level.INFO, "Spears need Minecraft 1.21.11+, Supreme spear set disabled");
+    }
+  }
+
+  private static void setupSpears(Supreme sup) {
+    EnchantsAndEffectsUtil.addGearBasicEnchants(WeaponsSpear.TITANIUM_SPEAR, WeaponsSpear.AURUM_SPEAR,
+        WeaponsSpear.ADAMANTIUM_SPEAR);
+    EnchantsAndEffectsUtil.addGearThorniumEnchants(WeaponsSpear.THORNIUM_SPEAR, WeaponsSpear.THORNIUM_SPEAR_MAGIC,
+        WeaponsSpear.THORNIUM_SPEAR_RARE, WeaponsSpear.THORNIUM_SPEAR_EPIC, WeaponsSpear.THORNIUM_SPEAR_LEGENDARY,
+        WeaponsSpear.THORNIUM_SPEAR_SUPREME);
+
+    new AbstractWeapons(WeaponsSpear.TITANIUM_SPEAR, WeaponsSpear.RECIPE_TITANIUM_SPEAR).register(sup);
+    new AbstractWeapons(WeaponsSpear.AURUM_SPEAR, WeaponsSpear.RECIPE_AURUM_SPEAR).register(sup);
+    new AbstractWeapons(WeaponsSpear.ADAMANTIUM_SPEAR, WeaponsSpear.RECIPE_ADAMANTIUM_SPEAR).register(sup);
+    new AbstractWeapons(WeaponsSpear.THORNIUM_SPEAR, WeaponsSpear.RECIPE_THORNIUM_SPEAR).register(sup);
+    new AbstractWeapons(WeaponsSpear.THORNIUM_SPEAR_MAGIC, ItemTier.getMagicRecipe(WeaponsSpear.THORNIUM_SPEAR)).register(sup);
+    new AbstractWeapons(WeaponsSpear.THORNIUM_SPEAR_RARE, ItemTier.getRareRecipe(WeaponsSpear.THORNIUM_SPEAR_MAGIC)).register(sup);
+    new AbstractWeapons(WeaponsSpear.THORNIUM_SPEAR_EPIC, ItemTier.getEpicRecipe(WeaponsSpear.THORNIUM_SPEAR_RARE)).register(sup);
+    new AbstractWeapons(WeaponsSpear.THORNIUM_SPEAR_LEGENDARY, ItemTier.getLegendaryRecipe(WeaponsSpear.THORNIUM_SPEAR_EPIC)).register(sup);
+    new AbstractWeapons(WeaponsSpear.THORNIUM_SPEAR_SUPREME, ItemTier.getSupremeRecipe(WeaponsSpear.THORNIUM_SPEAR_LEGENDARY)).register(sup);
   }
 }
