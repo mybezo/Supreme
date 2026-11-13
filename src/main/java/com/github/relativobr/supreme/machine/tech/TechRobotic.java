@@ -292,4 +292,9 @@ public class TechRobotic extends SimpleItemContainerMachine implements Radioacti
     return Radioactivity.VERY_HIGH;
   }
 
+  @Override
+  protected void onMachineRemoved(@Nonnull Block b) {
+    processing.remove(b);
+    progressTime.remove(b);
+  }
 }

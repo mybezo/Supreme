@@ -217,7 +217,7 @@ public class TechGenerator extends SimpleItemContainerMachine implements Radioac
       }
 
       public boolean isSynchronized() {
-        return false;
+        return true;
       }
     });
   }
@@ -465,5 +465,11 @@ public class TechGenerator extends SimpleItemContainerMachine implements Radioac
   @Override
   public Radioactivity getRadioactivity() {
     return Radioactivity.LOW;
+  }
+
+  @Override
+  protected void onMachineRemoved(@Nonnull Block b) {
+    processing.remove(b);
+    progressTime.remove(b);
   }
 }

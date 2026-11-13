@@ -319,4 +319,9 @@ public class TechMutation extends SimpleItemContainerMachine implements Radioact
     return Radioactivity.VERY_HIGH;
   }
 
+  @Override
+  protected void onMachineRemoved(@Nonnull Block b) {
+    processing.remove(b);
+    progressTime.remove(b);
+  }
 }
