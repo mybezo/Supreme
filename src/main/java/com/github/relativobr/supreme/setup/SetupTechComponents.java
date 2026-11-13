@@ -6,11 +6,13 @@ import static com.github.relativobr.supreme.util.RegisterItem.registerGrindStone
 import static com.github.relativobr.supreme.util.RegisterItem.registerTechMutation;
 
 import com.github.relativobr.supreme.Supreme;
+import com.github.relativobr.supreme.machine.tech.TechGenerator;
 import com.github.relativobr.supreme.machine.tech.TechMutation;
 import com.github.relativobr.supreme.resource.SupremeComponents;
 import com.github.relativobr.supreme.resource.mobtech.BeeTech;
 import com.github.relativobr.supreme.resource.mobtech.IronGolemTech;
 import com.github.relativobr.supreme.resource.mobtech.ZombieTech;
+import com.github.relativobr.supreme.util.SupremeItemStack;
 import com.github.relativobr.supreme.util.SupremeOptions;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 
@@ -22,6 +24,9 @@ public class SetupTechComponents {
 
     if (supremeOptions.isEnableTech()) {
 
+      SupremeItemStack.setMaxStackSize(SupremeComponents.CENTER_CARD_SIMPLE, TechGenerator.CARD_MAX_STACK_SIZE);
+      SupremeItemStack.setMaxStackSize(SupremeComponents.CENTER_CARD_ADVANCED, TechGenerator.CARD_MAX_STACK_SIZE);
+      SupremeItemStack.setMaxStackSize(SupremeComponents.CENTER_CARD_ULTIMATE, TechGenerator.CARD_MAX_STACK_SIZE);
       registerEnhancedCraft(SupremeComponents.CENTER_CARD_SIMPLE, SupremeComponents.RECIPE_CENTER_CARD_SIMPLE);
       registerEnhancedCraft(SupremeComponents.CENTER_CARD_ADVANCED, SupremeComponents.RECIPE_CENTER_CARD_ADVANCED);
       registerEnhancedCraft(SupremeComponents.CENTER_CARD_ULTIMATE, SupremeComponents.RECIPE_CENTER_CARD_ULTIMATE);

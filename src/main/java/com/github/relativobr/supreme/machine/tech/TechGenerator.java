@@ -69,6 +69,7 @@ public class TechGenerator extends SimpleItemContainerMachine implements Radioac
       SupremeComponents.CARRIAGE_MACHINE,
       SlimefunItems.HEATING_COIL, SupremeComponents.CARRIAGE_MACHINE};
 
+  public static final int CARD_MAX_STACK_SIZE = 64;
   public static final List<AbstractItemRecipe> receitasParaProduzir = new ArrayList<>();
   // sorted views of receitasParaProduzir, rebuilt only when a recipe is added
   private static List<AbstractItemRecipe> cachedRecipeShow = null;
@@ -105,6 +106,7 @@ public class TechGenerator extends SimpleItemContainerMachine implements Radioac
   public static void preSetup(Supreme plugin, int tierCard, SlimefunItemStack item,
       ItemStack input1, ItemStack input2,
       ItemStack output) {
+    SupremeItemStack.setMaxStackSize(item, CARD_MAX_STACK_SIZE);
     new UnplaceableBlock(ItemGroups.CARDS_CATEGORY, item, RecipeType.ENHANCED_CRAFTING_TABLE,
         new ItemStack[]{new ItemStack(input1), new ItemStack(input2), new ItemStack(input1),
             new ItemStack(input2),

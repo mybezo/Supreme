@@ -9,6 +9,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import org.bukkit.Material;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class SupremeItemStack extends SlimefunItemStack {
 
@@ -38,6 +39,17 @@ public class SupremeItemStack extends SlimefunItemStack {
   public SupremeItemStack(@Nonnull String id, @Nonnull String texture, boolean suffixLore, String... lor) {
     super(getOldIdSupremeLegacy(id), texture, Supreme.getLocalization().getItemName(id),
         getMultipleLore(id, suffixLore, lor));
+  }
+
+  /**
+   * Overrides the vanilla max stack size of an item (e.g. music discs used as cards are 1 by default).
+   */
+  public static void setMaxStackSize(@Nonnull SlimefunItemStack item, int maxStackSize) {
+    ItemMeta meta = item.getItemMeta();
+    if (meta != null) {
+      meta.setMaxStackSize(maxStackSize);
+      item.setItemMeta(meta);
+    }
   }
 
   private static String[] getMultipleLore(@Nonnull String id, boolean suffixLore, String... lor) {
