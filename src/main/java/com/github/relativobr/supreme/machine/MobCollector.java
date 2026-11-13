@@ -20,13 +20,13 @@ import io.github.thebusybiscuit.slimefun4.libraries.commons.lang.Validate;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.inventory.InvUtils;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Predicate;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
@@ -307,6 +307,8 @@ public class MobCollector extends SimpleItemWithLargeContainerMachine {
   @Override
   protected MachineRecipe findNextRecipe(@Nonnull BlockMenu inv) {
     int[] inputSlots = this.getInputSlots();
+    // nearby mobs are scanned at most once per tick and shared by all recipes
+    List<LivingEntity> nearbyMobs = null;
 
     for (int i = 0; i < inputSlots.length; ++i) {
       int slot = inputSlots[i];
@@ -318,9 +320,10 @@ public class MobCollector extends SimpleItemWithLargeContainerMachine {
         final ItemStack itemInInput = produce.getInput()[0];
         if (itemInSlot != null && itemInInput != null && (itemInSlot.getType() == itemInInput.getType())
             && InvUtils.fits(inv.toInventory(), produce.getOutput()[0], this.getOutputSlots())) {
-          Block invBlock = inv.getBlock();
-          produce.getClass();
-          if (this.isAnimalNearby(invBlock, produce::test)) {
+          if (nearbyMobs == null) {
+            nearbyMobs = getNearbyMobs(inv.getBlock());
+          }
+          if (nearbyMobs.stream().anyMatch(produce::test)) {
             if (itemInSlot.getType() == Material.GLASS_BOTTLE) {
               inv.consumeItem(slot, this.getSpeed());
             } else {
@@ -346,16 +349,14 @@ public class MobCollector extends SimpleItemWithLargeContainerMachine {
     return null;
   }
 
-  @ParametersAreNonnullByDefault
-  private boolean isAnimalNearby(Block b, Predicate<LivingEntity> predicate) {
-    return !b.getWorld().getNearbyEntities(b.getLocation(), mobRange, mobRange, mobRange, (n) -> {
-      return this.isValidAnimal(n, predicate);
-    }).isEmpty();
-  }
-
-  @ParametersAreNonnullByDefault
-  private boolean isValidAnimal(Entity n, Predicate<LivingEntity> predicate) {
-    return n instanceof LivingEntity && predicate.test((LivingEntity) n);
+  @Nonnull
+  private List<LivingEntity> getNearbyMobs(@Nonnull Block b) {
+    List<LivingEntity> mobs = new ArrayList<>();
+    for (Entity n : b.getWorld().getNearbyEntities(b.getLocation(), mobRange, mobRange, mobRange,
+        LivingEntity.class::isInstance)) {
+      mobs.add((LivingEntity) n);
+    }
+    return mobs;
   }
 
   public final MobCollector setMobRange(int value) {
