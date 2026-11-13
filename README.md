@@ -3,7 +3,9 @@ Supreme is an addon for Slimefun which adds 100+ various new resources that will
 
 ## Requirements
 
-Minecraft Version: +1.17
+Minecraft Version: 1.21+ (Java 21)
+
+Slimefun: latest Dev build
 
 
 
