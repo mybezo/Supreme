@@ -37,8 +37,8 @@
         <dependency>
             <groupId>com.github.Slimefun</groupId>
             <artifactId>Slimefun4</artifactId>
-            <!-- latest Slimefun Dev build (master branch) -->
-            <version>82419dca89</version>
+            <!-- compile-time API only; runs on the latest Slimefun Dev builds -->
+            <version>RC-37</version>
             <scope>provided</scope>
         </dependency>
 
