@@ -133,8 +133,17 @@ public class GenericMachine extends AContainer implements NotHopperable, RecipeD
           inv.dropItems(b.getLocation(), getOutputSlots());
         }
         removeMapBlock(b);
+        onMachineRemoved(b);
       }
     };
+  }
+
+  /**
+   * Called when a machine block is broken. Subclasses that keep their own
+   * per-block state must override this and clear it.
+   */
+  protected void onMachineRemoved(@Nonnull Block b) {
+    // no extra state by default
   }
 
   protected void updateStatusReset(BlockMenu menu) {

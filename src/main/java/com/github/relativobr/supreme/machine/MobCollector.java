@@ -436,4 +436,9 @@ public class MobCollector extends SimpleItemWithLargeContainerMachine {
     return getProcessing(b) != null;
   }
 
+  @Override
+  protected void onMachineRemoved(@Nonnull Block b) {
+    processing.remove(b);
+    progress.remove(b);
+  }
 }
