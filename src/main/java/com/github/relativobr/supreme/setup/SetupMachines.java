@@ -3,7 +3,6 @@ package com.github.relativobr.supreme.setup;
 import static com.github.relativobr.supreme.Supreme.getSupremeOptions;
 
 import com.github.relativobr.supreme.Supreme;
-import com.github.relativobr.supreme.machine.CheckInventory;
 import com.github.relativobr.supreme.machine.ElectricCrafter;
 import com.github.relativobr.supreme.machine.ForgeIngot;
 import com.github.relativobr.supreme.machine.ForgeMagical;
@@ -216,8 +215,5 @@ public class SetupMachines {
         .setProcessingSpeed(15).setEnergyConsumption(300).register(sup);
 
     SetupTechMachines.setup(sup);
-
-    CheckInventory.setup(sup);
-
   }
 }

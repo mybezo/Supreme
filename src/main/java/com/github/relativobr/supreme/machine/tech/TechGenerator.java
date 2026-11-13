@@ -70,6 +70,9 @@ public class TechGenerator extends SimpleItemContainerMachine implements Radioac
       SlimefunItems.HEATING_COIL, SupremeComponents.CARRIAGE_MACHINE};
 
   public static final List<AbstractItemRecipe> receitasParaProduzir = new ArrayList<>();
+  // sorted views of receitasParaProduzir, rebuilt only when a recipe is added
+  private static List<AbstractItemRecipe> cachedRecipeShow = null;
+  private static List<AbstractItemRecipe> cachedRecipeProcess = null;
   private Map<Block, ItemStack> processing = new HashMap<>();
   private Map<Block, Integer> progressTime = new HashMap<>();
   private int speed = 1;
@@ -80,6 +83,8 @@ public class TechGenerator extends SimpleItemContainerMachine implements Radioac
 
   public static void addRecipesToProcess(ItemStack input, ItemStack output) {
     receitasParaProduzir.add(new AbstractItemRecipe(input, output));
+    cachedRecipeShow = null;
+    cachedRecipeProcess = null;
   }
 
   public static void preSetup(Supreme plugin, SlimefunItemStack item, Material input,
@@ -133,17 +138,21 @@ public class TechGenerator extends SimpleItemContainerMachine implements Radioac
   }
 
   public List<AbstractItemRecipe> getRecipeShow() {
-
-    return receitasParaProduzir.stream().filter(o -> o.getInput() != null)
+    if (cachedRecipeShow == null) {
+      cachedRecipeShow = receitasParaProduzir.stream().filter(o -> o.getInput() != null)
         .sorted((o1, o2) -> Integer.compare(o1.getInput().length, o2.getInput().length))
-        .collect(Collectors.toList());
+        .collect(Collectors.toUnmodifiableList());
+    }
+    return cachedRecipeShow;
   }
 
   public List<AbstractItemRecipe> getRecipeProcess() {
-
-    return receitasParaProduzir.stream().filter(o -> o.getInput() != null)
+    if (cachedRecipeProcess == null) {
+      cachedRecipeProcess = receitasParaProduzir.stream().filter(o -> o.getInput() != null)
         .sorted((o1, o2) -> Integer.compare(o2.getInput().length, o1.getInput().length))
-        .collect(Collectors.toList());
+        .collect(Collectors.toUnmodifiableList());
+    }
+    return cachedRecipeProcess;
   }
 
   @Override

@@ -13,6 +13,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
+import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockPlaceHandler;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockUseHandler;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
@@ -20,11 +21,15 @@ import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.commons.lang.Validate;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
+import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import io.github.thebusybiscuit.slimefun4.utils.tags.SlimefunTag;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Locale;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -41,6 +46,7 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.BlockState;
 import org.bukkit.entity.Player;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
@@ -50,11 +56,11 @@ public class AbstractQuarry extends SlimefunItem implements EnergyNetComponent {
 
   private static final DecimalFormat FORMAT = new DecimalFormat("###,###,##0.00",
       DecimalFormatSymbols.getInstance(Locale.ENGLISH));
-  private int tickDelayThreshold = 0;
+  private static final String KEY_ENABLED = "enabled";
+  // per-block tick counter (each placed quarry has its own delay)
+  private final Map<Location, Integer> tickDelayThreshold = new HashMap<>();
   private int energyConsumed = -1;
   private int energyCapacity = -1;
-  private int energyCharge = 0;
-  private boolean enabled = true;
   private boolean effect = true;
   private int delaySpeed = 1;
 
@@ -63,7 +69,7 @@ public class AbstractQuarry extends SlimefunItem implements EnergyNetComponent {
   @ParametersAreNonnullByDefault
   public AbstractQuarry(ItemGroup category, SlimefunItemStack machine, ItemStack[] recipe) {
     super(category, machine, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
-    addItemHandler(onPlace(), onRightClick());
+    addItemHandler(onPlace(), onBreak(), onRightClick());
   }
 
   @Nonnull
@@ -87,21 +93,25 @@ public class AbstractQuarry extends SlimefunItem implements EnergyNetComponent {
   }
 
   private void tick(Block b) {
+    Location location = b.getLocation();
+
+    // The delay is not same as minecraft tick,
+    // but it's based on 'custom-ticker-delay' config.
+    int delay = tickDelayThreshold.getOrDefault(location, 0);
+    if (delay < (getSupremeOptions().getCustomTickerDelay() * delaySpeed)) {
+      tickDelayThreshold.put(location, delay + 1);
+      return;
+    }
+    tickDelayThreshold.put(location, 0);
+
     Block targetBlock = b.getRelative(BlockFace.DOWN);
-    if (isInvalidInventory(targetBlock) || !this.enabled || getCharge(b.getLocation()) < getEnergyConsumption()) {
+    if (isInvalidInventory(targetBlock) || !isEnabled(b) || getCharge(location) < getEnergyConsumption()) {
       // disabled machine or no energy, abort...
       return;
     }
-    BlockState state = targetBlock.getState();
+    // no snapshot: avoids copying the whole target inventory
+    BlockState state = PaperLib.getBlockState(targetBlock, false).getState();
     if (state instanceof InventoryHolder) {
-
-      // The delay is not same as minecraft tick,
-      // but it's based on 'custom-ticker-delay' config.
-      if (tickDelayThreshold < (getSupremeOptions().getCustomTickerDelay() * delaySpeed)) {
-        tickDelayThreshold++;
-        return;
-      }
-      tickDelayThreshold = 0;
       Inventory inv = ((InventoryHolder) state).getInventory();
       if (inv.firstEmpty() != -1) {
         ItemStack material = ItemUtil.getItemQuarry(this.getOutput(), UtilMachine.getRandomInt());
@@ -113,11 +123,24 @@ public class AbstractQuarry extends SlimefunItem implements EnergyNetComponent {
             Location loc = b.getLocation().add(0.5, 0.8, 0.5);
             b.getWorld().spawnParticle(Particle.HAPPY_VILLAGER, loc, 6);
           }
-          removeCharge(b.getLocation(), getEnergyConsumption());
-          energyCharge = getCharge(b.getLocation());
+          removeCharge(location, getEnergyConsumption());
         }
       }
     }
+  }
+
+  private boolean isEnabled(@Nonnull Block b) {
+    return !"false".equals(BlockStorage.getLocationInfo(b.getLocation(), KEY_ENABLED));
+  }
+
+  @Nonnull
+  private BlockBreakHandler onBreak() {
+    return new BlockBreakHandler(false, false) {
+      @Override
+      public void onPlayerBreak(BlockBreakEvent e, ItemStack item, List<ItemStack> drops) {
+        tickDelayThreshold.remove(e.getBlock().getLocation());
+      }
+    };
   }
 
   @Nonnull
@@ -137,10 +160,9 @@ public class AbstractQuarry extends SlimefunItem implements EnergyNetComponent {
       e.cancel();
       Player p = e.getPlayer();
       Block b = e.getClickedBlock().get();
-      energyCharge = getCharge(b.getLocation());
       if (isInvalidInventory(b.getRelative(BlockFace.DOWN))) {
         Slimefun.getLocalization().sendMessage(p, "machines.CARGO_NODES.must-be-placed");
-      } else if (BlockStorage.getLocationInfo(b.getLocation(), "owner").equals(p.getUniqueId().toString())
+      } else if (p.getUniqueId().toString().equals(BlockStorage.getLocationInfo(b.getLocation(), "owner"))
           && Slimefun.getProtectionManager().hasPermission(p, b, Interaction.INTERACT_BLOCK)) {
         showMachine(p, b);
       } else {
@@ -168,9 +190,11 @@ public class AbstractQuarry extends SlimefunItem implements EnergyNetComponent {
     }
 
     final String powerPerSecond = LoreBuilder.powerPerSecond(getEnergyConsumption());
+    final int energyCharge = getCharge(b.getLocation());
+    final boolean blockEnabled = isEnabled(b);
     final String powerCharged = LoreBuilder.powerCharged(energyCharge, getCapacity());
     final String infoSpeed = UtilEnergy.timePerItem((getSupremeOptions().getCustomTickerDelay() * delaySpeed) / 2);
-    if (energyCharge < getEnergyConsumption() || !this.enabled) {
+    if (energyCharge < getEnergyConsumption() || !blockEnabled) {
       menu.addItem(InventoryRecipe.QUARRY_STATUS,
           new CustomItemStack(Material.OBSIDIAN, ChatColor.RED + "NOT-ACTIVE", powerPerSecond, powerCharged,
               infoSpeed));
@@ -180,11 +204,11 @@ public class AbstractQuarry extends SlimefunItem implements EnergyNetComponent {
           new CustomItemStack(Material.GLOWSTONE, ChatColor.GREEN + "ACTIVE", powerPerSecond, powerCharged, infoSpeed));
       menu.addMenuClickHandler(InventoryRecipe.QUARRY_STATUS, ChestMenuUtils.getEmptyClickHandler());
     }
-    if (enabled) {
+    if (blockEnabled) {
       menu.addItem(InventoryRecipe.QUARRY_BUTTON, new CustomItemStack(Material.EMERALD_BLOCK,
           Slimefun.getLocalization().getMessages(p, "messages.auto-crafting.tooltips.enabled")));
       menu.addMenuClickHandler(InventoryRecipe.QUARRY_BUTTON, (pl, item, slot, action) -> {
-        enabled = false;
+        BlockStorage.addBlockInfo(b, KEY_ENABLED, "false");
         showMachine(p, b);
         return false;
       });
@@ -192,7 +216,7 @@ public class AbstractQuarry extends SlimefunItem implements EnergyNetComponent {
       menu.addItem(InventoryRecipe.QUARRY_BUTTON, new CustomItemStack(Material.REDSTONE_BLOCK,
           Slimefun.getLocalization().getMessages(p, "messages.auto-crafting.tooltips.disabled")));
       menu.addMenuClickHandler(InventoryRecipe.QUARRY_BUTTON, (pl, item, slot, action) -> {
-        enabled = true;
+        BlockStorage.addBlockInfo(b, KEY_ENABLED, "true");
         showMachine(p, b);
         return false;
       });
