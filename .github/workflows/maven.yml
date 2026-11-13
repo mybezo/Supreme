@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   build:
@@ -20,7 +21,14 @@ jobs:
       - name: Build with Maven
         run: mvn package
 
+      - name: Upload jar artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Supreme
+          path: target/Supreme.jar
+
       - name: Upload to Blob Builds
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: WalshyDev/blob-builds/gh-action@main
         with:
           project: Supreme
