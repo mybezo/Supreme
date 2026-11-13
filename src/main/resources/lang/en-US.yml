@@ -353,6 +353,60 @@ items:
       - "&f&lA Supreme Sword of Thornium"
       - ""
       - "&3Supreme Weapons"
+  supreme_titanium_spear:
+    name: "&f&lTitanium Spear"
+    lore:
+      - "&f&lA Spear of Titanium"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_aurum_spear:
+    name: "&f&lAurum Spear"
+    lore:
+      - "&f&lA Spear of Aurum"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_adamantium_spear:
+    name: "&f&lAdamantium Spear"
+    lore:
+      - "&f&lA Spear of Adamantium"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_spear_thornium:
+    name: "&f&lThornium Spear"
+    lore:
+      - "&f&lA Spear of Thornium"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_spear_magic:
+    name: "&a&lMagic Spear"
+    lore:
+      - "&f&lA Magic Spear of Thornium"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_spear_rare:
+    name: "&b&lRare Spear"
+    lore:
+      - "&f&lA Rare Spear of Thornium"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_spear_epic:
+    name: "&d&lEpic Spear"
+    lore:
+      - "&f&lA Epic Spear of Thornium"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_spear_legendary:
+    name: "&6&lLegendary Spear"
+    lore:
+      - "&f&lA Legendary Spear of Thornium"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_spear_supreme:
+    name: "&4&lSupreme Spear"
+    lore:
+      - "&f&lA Supreme Spear of Thornium"
+      - ""
+      - "&3Supreme Weapons"
   supreme_adamantium_axe:
     name: "&f&lAdamantium Axe"
     lore:
@@ -513,6 +567,60 @@ items:
     name: "&4&lSupreme Shovel"
     lore:
       - "&f&lA Supreme Shovel of Thornium"
+      - ""
+      - "&3Supreme Tools"
+  supreme_titanium_fishing_rod:
+    name: "&f&lTitanium Fishing Rod"
+    lore:
+      - "&f&lA Fishing Rod of Titanium"
+      - ""
+      - "&3Supreme Tools"
+  supreme_aurum_fishing_rod:
+    name: "&f&lAurum Fishing Rod"
+    lore:
+      - "&f&lA Fishing Rod of Aurum"
+      - ""
+      - "&3Supreme Tools"
+  supreme_adamantium_fishing_rod:
+    name: "&f&lAdamantium Fishing Rod"
+    lore:
+      - "&f&lA Fishing Rod of Adamantium"
+      - ""
+      - "&3Supreme Tools"
+  supreme_fishing_rod_thornium:
+    name: "&f&lThornium Fishing Rod"
+    lore:
+      - "&f&lA Fishing Rod of Thornium"
+      - ""
+      - "&3Supreme Tools"
+  supreme_fishing_rod_magic:
+    name: "&a&lMagic Fishing Rod"
+    lore:
+      - "&f&lA Magic Fishing Rod of Thornium"
+      - ""
+      - "&3Supreme Tools"
+  supreme_fishing_rod_rare:
+    name: "&b&lRare Fishing Rod"
+    lore:
+      - "&f&lA Rare Fishing Rod of Thornium"
+      - ""
+      - "&3Supreme Tools"
+  supreme_fishing_rod_epic:
+    name: "&d&lEpic Fishing Rod"
+    lore:
+      - "&f&lA Epic Fishing Rod of Thornium"
+      - ""
+      - "&3Supreme Tools"
+  supreme_fishing_rod_legendary:
+    name: "&6&lLegendary Fishing Rod"
+    lore:
+      - "&f&lA Legendary Fishing Rod of Thornium"
+      - ""
+      - "&3Supreme Tools"
+  supreme_fishing_rod_supreme:
+    name: "&4&lSupreme Fishing Rod"
+    lore:
+      - "&f&lA Supreme Fishing Rod of Thornium"
       - ""
       - "&3Supreme Tools"
   supreme_mob_collector_tool_i:

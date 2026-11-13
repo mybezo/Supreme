@@ -352,6 +352,60 @@ items:
       - "&f&lUma Espada Suprema de Thornium"
       - ""
       - "&3Armas Suprema"
+  supreme_titanium_spear:
+    name: "&f&lLança de Titanium"
+    lore:
+      - "&f&lUma Lança de Titanium"
+      - ""
+      - "&3Armas Suprema"
+  supreme_aurum_spear:
+    name: "&f&lLança de Aurum"
+    lore:
+      - "&f&lUma Lança de Aurum"
+      - ""
+      - "&3Armas Suprema"
+  supreme_adamantium_spear:
+    name: "&f&lLança de Adamantium"
+    lore:
+      - "&f&lUma Lança de Adamantium"
+      - ""
+      - "&3Armas Suprema"
+  supreme_spear_thornium:
+    name: "&f&lLança de Thornium"
+    lore:
+      - "&f&lUma Lança de Thornium"
+      - ""
+      - "&3Armas Suprema"
+  supreme_spear_magic:
+    name: "&a&lLança Mágica"
+    lore:
+      - "&f&lUma Lança Mágica de Thornium"
+      - ""
+      - "&3Armas Suprema"
+  supreme_spear_rare:
+    name: "&b&lLança Rara"
+    lore:
+      - "&f&lUma Lança Rara de Thornium"
+      - ""
+      - "&3Armas Suprema"
+  supreme_spear_epic:
+    name: "&d&lLança Épica"
+    lore:
+      - "&f&lUma Lança Épica de Thornium"
+      - ""
+      - "&3Armas Suprema"
+  supreme_spear_legendary:
+    name: "&6&lLança Lendária"
+    lore:
+      - "&f&lUma Lança Lendária de Thornium"
+      - ""
+      - "&3Armas Suprema"
+  supreme_spear_supreme:
+    name: "&4&lLança Suprema"
+    lore:
+      - "&f&lUma Lança Suprema de Thornium"
+      - ""
+      - "&3Armas Suprema"
   supreme_adamantium_axe:
     name: "&f&lAdamantium Axe"
     lore:
@@ -512,6 +566,60 @@ items:
     name: "&4&lSupreme Shovel"
     lore:
       - "&f&lA Supreme Shovel of Thornium"
+      - ""
+      - "&3Ferramentas Suprema"
+  supreme_titanium_fishing_rod:
+    name: "&f&lVara de Pesca de Titanium"
+    lore:
+      - "&f&lUma Vara de Pesca de Titanium"
+      - ""
+      - "&3Ferramentas Suprema"
+  supreme_aurum_fishing_rod:
+    name: "&f&lVara de Pesca de Aurum"
+    lore:
+      - "&f&lUma Vara de Pesca de Aurum"
+      - ""
+      - "&3Ferramentas Suprema"
+  supreme_adamantium_fishing_rod:
+    name: "&f&lVara de Pesca de Adamantium"
+    lore:
+      - "&f&lUma Vara de Pesca de Adamantium"
+      - ""
+      - "&3Ferramentas Suprema"
+  supreme_fishing_rod_thornium:
+    name: "&f&lVara de Pesca de Thornium"
+    lore:
+      - "&f&lUma Vara de Pesca de Thornium"
+      - ""
+      - "&3Ferramentas Suprema"
+  supreme_fishing_rod_magic:
+    name: "&a&lVara de Pesca Mágica"
+    lore:
+      - "&f&lUma Vara de Pesca Mágica de Thornium"
+      - ""
+      - "&3Ferramentas Suprema"
+  supreme_fishing_rod_rare:
+    name: "&b&lVara de Pesca Rara"
+    lore:
+      - "&f&lUma Vara de Pesca Rara de Thornium"
+      - ""
+      - "&3Ferramentas Suprema"
+  supreme_fishing_rod_epic:
+    name: "&d&lVara de Pesca Épica"
+    lore:
+      - "&f&lUma Vara de Pesca Épica de Thornium"
+      - ""
+      - "&3Ferramentas Suprema"
+  supreme_fishing_rod_legendary:
+    name: "&6&lVara de Pesca Lendária"
+    lore:
+      - "&f&lUma Vara de Pesca Lendária de Thornium"
+      - ""
+      - "&3Ferramentas Suprema"
+  supreme_fishing_rod_supreme:
+    name: "&4&lVara de Pesca Suprema"
+    lore:
+      - "&f&lUma Vara de Pesca Suprema de Thornium"
       - ""
       - "&3Ferramentas Suprema"
   supreme_mob_collector_tool_i:

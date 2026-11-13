@@ -103,6 +103,8 @@ Make a new issue, pull request, or discord Slimefun-Addon-Community
 - **Supreme Weapons** - Endgame tier
 - **Supreme Armor** - Endgame tier
 
+Each tier also has a **Spear** (weapon, Minecraft 1.21.11+) and a **Fishing Rod** (tool).
+
 
 ## Resource Core
 - **Core of Life** - This core contains fragments of life that have been collected by the world

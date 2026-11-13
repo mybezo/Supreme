@@ -3,6 +3,8 @@ package com.github.relativobr.supreme.machine.multiblock;
 import com.github.relativobr.supreme.generic.machine.GenericMachine;
 import com.github.relativobr.supreme.generic.recipe.AbstractItemRecipe;
 import com.github.relativobr.supreme.gear.ArmorThornium;
+import com.github.relativobr.supreme.gear.SpearSupport;
+import com.github.relativobr.supreme.gear.WeaponsSpear;
 import com.github.relativobr.supreme.gear.WeaponsThornium;
 import com.github.relativobr.supreme.resource.SupremeComponents;
 import com.github.relativobr.supreme.resource.magical.SupremeCetrus;
@@ -196,6 +198,19 @@ public class ElectricGearFabricator extends GenericMachine {
         ToolsThornium.THORNIUM_SHOVEL_LEGENDARY));
     list.add(new AbstractItemRecipe(ItemTier.getSupremeRecipe(ToolsThornium.THORNIUM_SHOVEL_LEGENDARY),
         ToolsThornium.THORNIUM_SHOVEL_SUPREME));
+
+    list.add(new AbstractItemRecipe(ItemTier.getMagicRecipe(ToolsThornium.THORNIUM_FISHING_ROD), ToolsThornium.THORNIUM_FISHING_ROD_MAGIC));
+    list.add(new AbstractItemRecipe(ItemTier.getRareRecipe(ToolsThornium.THORNIUM_FISHING_ROD_MAGIC), ToolsThornium.THORNIUM_FISHING_ROD_RARE));
+    list.add(new AbstractItemRecipe(ItemTier.getEpicRecipe(ToolsThornium.THORNIUM_FISHING_ROD_RARE), ToolsThornium.THORNIUM_FISHING_ROD_EPIC));
+    list.add(new AbstractItemRecipe(ItemTier.getLegendaryRecipe(ToolsThornium.THORNIUM_FISHING_ROD_EPIC), ToolsThornium.THORNIUM_FISHING_ROD_LEGENDARY));
+    list.add(new AbstractItemRecipe(ItemTier.getSupremeRecipe(ToolsThornium.THORNIUM_FISHING_ROD_LEGENDARY), ToolsThornium.THORNIUM_FISHING_ROD_SUPREME));
+    if (SpearSupport.isSupported()) {
+      list.add(new AbstractItemRecipe(ItemTier.getMagicRecipe(WeaponsSpear.THORNIUM_SPEAR), WeaponsSpear.THORNIUM_SPEAR_MAGIC));
+      list.add(new AbstractItemRecipe(ItemTier.getRareRecipe(WeaponsSpear.THORNIUM_SPEAR_MAGIC), WeaponsSpear.THORNIUM_SPEAR_RARE));
+      list.add(new AbstractItemRecipe(ItemTier.getEpicRecipe(WeaponsSpear.THORNIUM_SPEAR_RARE), WeaponsSpear.THORNIUM_SPEAR_EPIC));
+      list.add(new AbstractItemRecipe(ItemTier.getLegendaryRecipe(WeaponsSpear.THORNIUM_SPEAR_EPIC), WeaponsSpear.THORNIUM_SPEAR_LEGENDARY));
+      list.add(new AbstractItemRecipe(ItemTier.getSupremeRecipe(WeaponsSpear.THORNIUM_SPEAR_LEGENDARY), WeaponsSpear.THORNIUM_SPEAR_SUPREME));
+    }
 
     return list;
 
