@@ -1,155 +1,284 @@
+<div align="center">
+
 # Supreme
-Supreme is an addon for Slimefun which adds 100+ various new resources that will allow you to craft powerful new items, weapons, tools and armor. These can be made up from titanium, aurum, adamantium, thornium with some being magical, rare, epic, legendary or supreme! It also adds 12 new electric generators, 5 new capacitors and even more... 
+
+**A Slimefun addon with 100+ new resources, machines, generators, weapons, tools and armor.**
+
+Forge Titanium, Aurum, Adamantium and Thornium, then upgrade your gear through
+Magic, Rare, Epic, Legendary and **Supreme** tiers.
+
+[![Java CI](https://github.com/mybezo/Supreme/actions/workflows/maven.yml/badge.svg)](https://github.com/mybezo/Supreme/actions/workflows/maven.yml)
+![Minecraft](https://img.shields.io/badge/Minecraft-1.21%2B-brightgreen)
+![Java](https://img.shields.io/badge/Java-21-orange)
+![Version](https://img.shields.io/badge/version-2.0.0-blue)
+[![License](https://img.shields.io/badge/license-GPL--3.0-lightgrey)](LICENSE)
+
+</div>
+
+---
+
+## Contents
+
+- [Features](#features)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [What's new in 2.0.0](#whats-new-in-200)
+- [Machines](#machines)
+- [Generators & Capacitors](#generators--capacitors)
+- [Gear: Weapons, Tools & Armor](#gear-weapons-tools--armor)
+- [Resources](#resources)
+- [Configuration](#configuration)
+- [Building from source](#building-from-source)
+- [Support](#support)
+- [Credits & License](#credits--license)
+
+## Features
+
+- **100+ resources**: alloys, plates, cores, magical scepters and attributes
+- **Multiblock & electric machines** to forge ingots, cores and magical items
+- **Automation**: quarries, mob collector, virtual garden and virtual aquarium
+- **MobTech system**: collect, mutate and evolve mob "tech" heads to speed up machines
+- **12 generators and 5 capacitors**, each with its own placement rule
+- **Tiered gear**: swords, bows, shields, spears, pickaxes, axes, shovels, fishing rods and full armor sets
+- **Translations**: English (`en-US`), Portuguese (`pt-BR`) and Simplified Chinese (`zh-CN`)
+- **Highly configurable**: enchantments, effects, power values, quarry output and more
 
 ## Requirements
 
-Minecraft Version: 1.21+ (Java 21)
+| | |
+|---|---|
+| **Server** | Spigot or Paper **1.21+** (spears need **1.21.11+**) |
+| **Java** | 21 or newer |
+| **Slimefun** | Latest [Slimefun Dev build](https://blob.build/project/Slimefun4/Dev) |
 
-Slimefun: latest Dev build
+> [!IMPORTANT]
+> Version 2.0.0 no longer supports Minecraft 1.17–1.20.4. Stay on an older Supreme build for those versions.
 
+## Installation
 
+1. Download `Supreme.jar` from the **Artifacts** section of the latest successful
+   [Java CI run](https://github.com/mybezo/Supreme/actions/workflows/maven.yml).
+2. Put it in your server's `plugins/` folder next to Slimefun.
+3. Start the server. `plugins/Supreme/config.yml` and the language files are generated on first start.
+4. Optional: set `options.lang` in `config.yml` to `en-US`, `pt-BR` or `zh-CN`.
 
-### [Download](https://blob.build/project/Supreme)
-[![Build Status](https://thebusybiscuit.github.io/builds/RelativoBR/Supreme/main/badge.svg)](https://blob.build/project/Supreme)
+## What's new in 2.0.0
 
+**Compatibility**
+- Updated for Minecraft 1.21+ and the latest Slimefun Dev builds (Java 21)
 
-## Bugs/Suggestions
+**New items**
+- **Spear set**: Titanium, Aurum, Adamantium and Thornium → Supreme (Minecraft 1.21.11+), with the Lunge enchantment up to level 20
+- **Fishing rod set**: Titanium, Aurum, Adamantium and Thornium → Supreme
 
-Make a new issue, pull request, or discord Slimefun-Addon-Community
+**Changes**
+- Tech Generator cards and card components now stack up to **64**
+
+**Performance & fixes**
+- Each quarry now keeps its own production timer and on/off switch. Before, quarries of the same type shared one timer and one switch.
+- Quarries no longer copy the target chest inventory every tick
+- Mob Collector scans for nearby mobs once per tick instead of once per recipe
+- Machines clear their progress when broken, so it no longer leaks or resumes on re-placement
+- Tech Generator now runs on the main thread (safe inventory access)
+
+**Removed**
+- **CheckInventory** lamp. Break any placed ones before updating.
+
+## Machines
+
+### Multiblock machines
+
+| Machine | Description |
+|---|---|
+| **Core Fabricator** | Craft resource cores |
+| **Gear Fabricator** | Craft weapons, tools and armor |
+| **Magical Fabricator** | Craft magical items |
+
+### Electric machines
+
+| Machine | Description |
+|---|---|
+| **Electric Core Machine** | Craft core resources with power |
+| **Electric Magical Machine** | Craft magical resources with power |
+| **Electric Gear Fabricator** | Upgrade gear to higher tiers with power |
+| **Forge Ingot** | Forge ingot resources |
+| **Forge Magical** | Forge magical resources |
+| **Foundry** | Foundry and synthesizer items |
+| **Magic Altar** | Craft runes and magical items |
+
+### Automation
+
+| Machine | Description |
+|---|---|
+| **Mob Collector** | Collects drops from nearby mobs using shears, swords or bottles |
+| **Virtual Garden** | Grows crops and natural resources |
+| **Virtual Aquarium** | Collects items you would normally fish up at sea |
+| **Quarries** | Cobblestone, Coal, Iron, Gold, Diamond, Thornium and Nuggets of Supreme. Place one on top of a chest, trapped chest, barrel or shulker box. |
+
+### MobTech
+
+| Machine | Description |
+|---|---|
+| **MobTech Collector** | Captures nearby mobs as MobTech items that reduce processing time, increase output or save energy |
+| **Tech Mutation** | Evolves MobTech by chance: 20–25% success in tier I up to 80–100% in tier III |
+| **Tech Robotic** | Evolves MobTech without luck, using a fixed amount of resources (64× tier I, 32× tier II, 16× tier III) |
+| **Tech Generator** | Slowly generates materials from a crafting card. Bee, Golem and Zombie MobTech speed it up. |
+
+## Generators & Capacitors
+
+| Generator | Requirement |
+|---|---|
+| **Generator Mob** | Generates energy from methane produced by nearby animals |
+| **Basic Ignis / Ignis Generator** | Fire below the block |
+| **Basic Ventus / Ventus Generator** | Open faces exposed to the wind |
+| **Basic Aqua / Aqua Generator** | Water below the block |
+| **Basic Lux / Lux Generator** | Sunlight or moonlight |
+| **Basic Lumium / Lumium Generator** | Placed below ground |
+| **Thornium Generator** | Works anywhere |
+| **Supreme Generator** | Works anywhere |
+
+**Capacitors:** Aurum, Titanium, Adamantium, Thornium and Supreme.
+
+Capacity, buffer and output of every generator and capacitor can be changed in `power-section`.
+
+## Gear: Weapons, Tools & Armor
+
+All gear is crafted in the **Gear Fabricator** and is **Soulbound**. Thornium gear and higher is unbreakable by default.
+
+| Tier | Material | Stage |
+|---|---|---|
+| Titanium | Titanium Plate | Basic |
+| Aurum | Aurum Plate | Basic |
+| Adamantium | Adamantium Plate | Basic |
+| Thornium | Thornium Ingot | Advanced |
+| Magic | upgrade of Thornium | Advanced |
+| Rare | upgrade of Magic | Advanced |
+| Epic | upgrade of Rare | Endgame |
+| Legendary | upgrade of Epic | Endgame |
+| Supreme | upgrade of Legendary | Endgame |
+
+| Category | Items |
+|---|---|
+| **Weapons** | Sword, Spear¹, Bow², Shield² |
+| **Tools** | Pickaxe, Axe, Shovel, Fishing Rod |
+| **Armor** | Helmet, Chestplate, Leggings, Boots |
+
+¹ Requires Minecraft 1.21.11+. On older servers the spear set is skipped automatically.
+² Thornium tiers only.
+
+## Resources
+
+### Resource Cores
+
+| Core | Description |
+|---|---|
+| **Core of Life** | Fragments of life collected from the world |
+| **Core of Death** | Souls of entities that have gone beyond |
+| **Core of Color** | Colors collected around the world |
+| **Core of Block** | Blocks collected around the world |
+| **Core of Nature** | Natural materials collected around the world |
+| **Core of Alloy** | Ores collected around the world |
+
+### Magical Resources
+
+| Item | Description |
+|---|---|
+| **Cetrus Lux / Ventus / Lumium / Aqua / Ignis** | Super elemental scepters |
+| **Attribute Magic** | Protection, Unbreaking and Mending |
+| **Attribute Bomb** | Blast, Fire and Projectile Protection, Thorns |
+| **Attribute Fortune** | Efficiency and Fortune |
+| **Attribute Impetus** | Sharpness, Fire Aspect and Looting |
+
+## Configuration
+
+All settings live in `plugins/Supreme/config.yml`. New keys added by updates are read from the
+defaults inside the jar, so you don't have to regenerate your config.
+
+<details>
+<summary><b>General options</b> (<code>options</code>)</summary>
+
+| Option | Default | Description |
+|---|---|---|
+| `lang` | `en-US` | Language: `en-US`, `pt-BR` or `zh-CN` |
+| `auto-update` | `true` | Auto-update (only for `Dev` builds from Blob Builds) |
+| `use-legacy-supremeexpansion-item-id` | `false` | Keep item IDs compatible with the old SupremeExpansion addon |
+| `custom-bc` | `false` | Alternative balance: lower attribute enchantments and fewer Mob Collector drops |
+| `enable-generators` | `true` | Enable generators |
+| `limit-production-generators` | `false` | Reduce generator output (factor 5×) |
+| `delay-time-valid-generators` | `600` | Delay before rechecking a generator after nearby blocks change |
+| `enable-quarry` | `true` | Enable quarries |
+| `limit-production-quarry` | `false` | Hard mode: 50% chance for a quarry cycle to fail |
+| `custom-ticker-delay` | `2` | Quarry production delay |
+| `base-time-virtual-garden` | `15` | Virtual Garden base processing time |
+| `base-time-virtual-aquarium` | `15` | Virtual Aquarium base processing time |
+| `base-time-mob-collector` | `15` | Mob Collector base processing time |
+| `base-time-tech-generator` | `1800` | Tech Generator base processing time |
+| `tech-generator-max-amount` | `64` | Tech Generator output amount |
+| `machine-max-attempt-consumed` | `30` | Electric machines: max retries for consuming input items |
+| `mob-tech-enable-bee` | `true` | Enable Bee MobTech |
+| `mob-tech-enable-iron-golem` | `true` | Enable Iron Golem MobTech |
+| `mob-tech-enable-zombie` | `true` | Enable Zombie MobTech |
+| `enable-weapons` | `true` | Enable weapons |
+| `enable-tools` | `true` | Enable tools |
+| `enable-armor` | `true` | Enable armor |
+| `enable-tech` | `true` | Enable MobTech machines and resources |
+
+</details>
+
+<details>
+<summary><b>Other sections</b></summary>
+
+| Section | Description |
+|---|---|
+| `quarry-custom-output` | Items and chances produced by each quarry (up to 12 items per quarry) |
+| `supreme-enchant` | Enchantments and `unbreakable` flag per gear item (level `0` disables, max `100`) |
+| `supreme-effect` | Potion effects granted by gear |
+| `power-section` | Capacity, buffer and energy of every generator and capacitor |
+
+Example: change the Supreme Spear enchantments.
+
+```yaml
+supreme-enchant:
+  supreme_spear_supreme:
+    unbreakable: true
+    sharpness: 50
+    looting: 20
+    fire_aspect: 20
+    mending: 20
+    lunge: 20
+```
+
+</details>
+
+## Building from source
+
+Requires **JDK 21** and **Maven**.
+
+```bash
+git clone https://github.com/mybezo/Supreme.git
+cd Supreme
+mvn package
+```
+
+The plugin jar is written to `target/Supreme.jar`.
+
+## Support
+
+Found a bug or have a suggestion? [Open an issue](https://github.com/mybezo/Supreme/issues) or a pull request,
+or ask in the Slimefun Addon Community on Discord.
 
 <p>
   <a href="https://discord.gg/slimefun">
-    <img src="https://discordapp.com/api/guilds/565557184348422174/widget.png?style=banner3" alt="Discord Invite"/>
+    <img src="https://discordapp.com/api/guilds/565557184348422174/widget.png?style=banner3" alt="Slimefun Discord"/>
   </a>
   <a href="https://discord.gg/SqD3gg5SAU">
-    <img src="https://discordapp.com/api/guilds/809178621424041997/widget.png?style=banner3" alt="Discord Invite"/>
+    <img src="https://discordapp.com/api/guilds/809178621424041997/widget.png?style=banner3" alt="Slimefun Addon Community Discord"/>
   </a>
 </p>
 
+## Credits & License
 
-## Machines
-- **Core Fabricator** - MultiBlock Machine - You can craft core here
-- **Gear Fabricator** - MultiBlock Machine - You can craft weapons, armor and tools here
-- **Magical Fabricator** - MultiBlock Machine - You can craft magical here
-- **Electric Core Machine** - Craft resource of core
-- **Electric Magical Machine** - Craft resource of magical
-- **Forge Ingot** - This machine allows you to forge ingot resources
-- **Forge Magical** - This machine allows you to forge magical resources
-- **Foundry** - Foundry and Synthesizer Items
-- **Magic Altar** - Craft Rune and Magical Items
-- **Mob Collector** - This machine allows you to collect items from nearby mobs
-- **Virtual Aquarium** - This machine allows you to collect items that are collected at sea
-- **Virtual Garden** - This machine allows you to cultivate some resources
-- **MobTech Collector** - This machine allows you to collect mobs nearby, an item used to increase the performance of machines, whether reducing time, increasing production or saving energy.
-- **Tech Mutation** - Generator mutation to progress mobtech (heads) to higher levels, through mutation types, where there is a success probability depending on the machine level that varies from 20% to 25% in tier I and from 80% to 100% in tier III.
-- **Tech Robotic** - Similar to the previous mutation machine, but it doesn't deal with luck, it works with science where a specific amount of resources can be used to evolve the mobtech, being 64x for tier I, tier II with 32 and tier III with 16x
-- **Tech Generator** - Using power and a specific crafting card to generate materials slowly, but with mobtech the bees, golem and zombie, mutant or robotics can speed up this process to more satisfying levels
-- **Cobblestone Quarry** - Generate Cobblestone
-- **Coal Quarry** - Generate basic resource
-- **Iron Quarry** - Generate basic resource
-- **Gold Quarry** - Generate basic resource
-- **Diamond Quarry** - Generate basic resource
-- **Thornium Quarry** - Generate advanced resource
-- **Nuggets of Supreme Quarry** - Generate advanced resource
+Created by **RelativoBR**, **Especttra**, **WilianSantosBR** and **Mynothauro**.
+Fork of [RelativoBR/Supreme](https://github.com/RelativoBR/Supreme).
 
-
-## Generators
-- **Aurum Capacitor** 
-- **Titanium Capacitor** 
-- **Adamantium Capacitor** 
-- **Thornium Capacitor** 
-- **Supreme Capacitor**
-- **GeneratorMob** - Generates energy from methane generated by animals
-- **Basic Ignis Generator** - Need fire under this block to work
-- **Ignis Generator** - Need fire under this block to work
-- **Basic Ventus Generator** - It needs to be with its faces in the wind to work
-- **Ventus Generator** - It needs to be with its faces in the wind to work
-- **Basic Aqua Generator** - Need water under this block to work
-- **Aqua Generator** - Need water under this block to work
-- **Basic Lux Generator** - Needs to receive sunlight for moonlight to work
-- **Lux Generator** - Needs to receive sunlight for moonlight to work
-- **Basic Lumium Generator** - Needs to be below ground to work
-- **Lumium Generator** - Needs to be below ground to work
-- **Thornium Generator** - Generates energy anywhere
-- **Supreme Generator** - Generates energy anywhere
-
-
-## Gear / Tools
-- **Aurum Tools** - Basic tier
-- **Aurum Weapons** - Basic tier
-- **Aurum Armor** - Basic tier
-- **Titanium Tools** - Basic tier
-- **Titanium Weapons** - Basic tier
-- **Titanium Armor** - Basic tier
-- **Adamantium Tools** - Basic tier
-- **Adamantium Weapons** - Basic tier
-- **Adamantium Armor** - Basic tier
-- **Thornium Tools** - Advanced tier
-- **Thornium Weapons** - Advanced tier
-- **Thornium Armor** - Advanced tier
-- **Magic Tools** - Advanced tier
-- **Magic Weapons** - Advanced tier
-- **Magic Armor** - Advanced tier
-- **Rare Tools** - Advanced tier
-- **Rare Weapons** - Advanced tier
-- **Rare Armor** - Advanced tier
-- **Epic Tools** - Endgame tier
-- **Epic Weapons** - Endgame tier
-- **Epic Armor** - Endgame tier
-- **Legendary Tools** - Endgame tier
-- **Legendary Weapons** - Endgame tier
-- **Legendary Armor** - Endgame tier
-- **Supreme Tools** - Endgame tier
-- **Supreme Weapons** - Endgame tier
-- **Supreme Armor** - Endgame tier
-
-Each tier also has a **Spear** (weapon, Minecraft 1.21.11+) and a **Fishing Rod** (tool).
-
-
-## Resource Core
-- **Core of Life** - This core contains fragments of life that have been collected by the world
-- **Core of Death** - This core contains the souls of various entities that have gone beyond
-- **Core of Color** - This core contains several colors that have been collected around the world
-- **Core of Block** - This core contains several blocks that have been collected around the world
-- **Core of Nature** - This core contains several natural that have been collected around the world
-- **Core of Alloy** - This core contains several ores that have been collected around the world
-
-
-## Resource Magical
-- **Cetrus Lux** - A super Lux scepter
-- **Cetrus Ventus** - A super Ventus scepter
-- **Cetrus Lumium** - A super Lumium scepter
-- **Cetrus Aqua** - A super Aqua scepter
-- **Cetrus Ignis** - A super Ignis scepter
-- **Attribute Magic** - A super Magic attribute with special effect
-- **Attribute Bomb** - A super Bomb attribute with special effects
-- **Attribute Fortune** - A super Fortune attribute with special effects
-- **Attribute Impetus** - A super Impetus attribute with special effects
-
-
-## Customize Configuration (config.yml)
-
-- **use-legacy-supremeexpansion-item-id** - Indication use compatibily old item from addon SupremeExpanssion (default: false)
-- **enable-generators** - Indication whether to enable the power generators (default: true)
-- **limit-production-generators** - To reduce the efficiency of generators (factor 5x) (default: false)
-- **delay-time-valid-generators** - Configuration for validation waiting time if a generator must be turned off, due to the change of nearby blocks (default: 600)
-- **enable-quarry** - Indication whether to enable the quarry machine (default: true)
-- **limit-production-quarry** - To reduce quarry production (hard mode 50% failure) (default: false)
-- **custom-ticker-delay** - To change the quarry production delay (default: 2)
-- **base-time-virtual-garden** - To change the Virtual Garden base processing time (default: 15)
-- **base-time-virtual-aquarium** - To change the Virtual Aquarium base processing time (default: 15)
-- **base-time-mob-collector** - To change the Mob Collector base processing time (default: 15)
-- **base-time-tech-generator** - To change the Tech Generator base processing time (default: 1800)
-- **tech-generator-max-amount** - To change the Tech Generator base result item amount (default: 64)
-- **machine-max-attempt-consumed** - To change the Electric Machines max attempt consumed item retry (default: 30)
-- **mob-tech-enable-bee** - Indication whether to enable the Bee in Mob Tech (default: true)
-- **mob-tech-enable-iron-golem** - Indication whether to enable the Iron Golem in Mob Tech (default: true)
-- **mob-tech-enable-zombie** - Indication whether to enable the Zombie in Mob Tech (default: true)
-- **quarry-custom-output** - Can be adjusted all item productions in Quarry
-- **enable-weapons** - Indication whether to enable the weapons (default: true)
-- **enable-tools** - Indication whether to enable the tools (default: true)
-- **enable-armor** - Indication whether to enable the armor (default: true)
-- **enable-tech** - Indication whether to enable new machine and resource to clonnig item (default: true)
-- **supreme-enchant** - Indication Enchantment of the gear and tools
-- **supreme-effects** - Indication Effects of the gear
-- **power-section** - Customizable Capacity, Buffer and Energy of the capacitor and generator
+Licensed under the [GNU General Public License v3.0](LICENSE).
