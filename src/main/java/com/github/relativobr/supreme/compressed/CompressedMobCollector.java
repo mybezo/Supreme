@@ -18,9 +18,10 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
 
 /**
- * Compressed {@link MobCollector}. Every collector that runs uses its input like the original machine:
- * glass bottles are consumed, tools lose durability. The input decides how many of the combined collectors
- * run (up to the multiplier). The mobs are only required nearby, they are not consumed.
+ * Compressed {@link MobCollector}. Glass bottles (and other items without durability) are consumed for every
+ * collector that runs, so they limit how many of the combined collectors run. A tool with durability is only used
+ * once per operation like in the original machine, all the collectors run. The mobs are only required nearby,
+ * they are not consumed.
  */
 public class CompressedMobCollector extends MobCollector implements Compressible, CompressedProcessor.Host {
 

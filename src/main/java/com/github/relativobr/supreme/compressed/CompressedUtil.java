@@ -157,30 +157,25 @@ public class CompressedUtil {
   }
 
   /**
-   * How many units a tool-like input supports, the same way the original machines use it:
-   * a breakable tool loses 2 durability per unit and breaks at the end,
-   * an item without durability is consumed (1 per unit), an unbreakable item is not used up.
+   * How many units a tool-like input supports. A tool with durability is used once per operation
+   * (like in the original machine), however many units run, so it allows all the units. An item without
+   * durability is consumed like in the original machine, one per unit.
    */
   public static int toolUnits(@Nullable ItemStack item, int maxUnits) {
     if (item == null) {
       return 0;
     }
     ItemMeta meta = item.getItemMeta();
-    if (meta == null || meta.isUnbreakable()) {
+    if (meta == null || meta.isUnbreakable() || item.getType().getMaxDurability() > 0) {
       return maxUnits;
     }
-    int maxDurability = item.getType().getMaxDurability();
-    if (maxDurability <= 0) {
-      return Math.min(maxUnits, item.getAmount());
-    }
-    int damage = meta instanceof Damageable damageable ? damageable.getDamage() : 0;
-    int remaining = maxDurability - damage;
-    int units = remaining <= 0 ? 1 : (remaining + 1) / 2;
-    return Math.min(maxUnits, units);
+    return Math.min(maxUnits, item.getAmount());
   }
 
   /**
-   * Use a tool-like input for the given units, see {@link #toolUnits}.
+   * Use a tool-like input for one operation of the given units, see {@link #toolUnits}:
+   * a tool with durability loses 2 durability once (it breaks like in the original machine),
+   * an item without durability is consumed once per unit, an unbreakable item is not used up.
    */
   public static void useTool(@Nonnull BlockMenu inv, int slot, @Nonnull ItemStack item, int units) {
     ItemMeta meta = item.getItemMeta();
@@ -193,7 +188,7 @@ public class CompressedUtil {
       return;
     }
     if (meta instanceof Damageable damageable) {
-      int damage = damageable.getDamage() + 2 * units;
+      int damage = damageable.getDamage() + 2;
       if (damage >= maxDurability) {
         inv.consumeItem(slot);
       } else {

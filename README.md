@@ -176,7 +176,7 @@ the lower tiers can be viewed from the recipes.
 
 | Kind | Items | What is multiplied |
 |---|---|---|
-| **Compressed Machine** | Virtual Garden, Virtual Aquarium, Mob Collector, MobTech Collector (I–III) | One operation runs up to N machines at once, limited by the input (seeds, tool durability, bottles, Empty MobTechs, nearby mobs) and the free output space. Same speed, energy only for the machines that run. |
+| **Compressed Machine** | Virtual Garden, Virtual Aquarium, Mob Collector, MobTech Collector (I–III) | One operation runs up to N machines at once, limited by the input (seeds, bottles, Empty MobTechs, nearby mobs) and the free output space. Tools with durability are used once per operation. Same speed, energy only for the machines that run. |
 | **Compressed Generator** | All Supreme generators and Generator Mob | Energy per tick and buffer |
 | **Compressed Capacitor** | Aurum, Titanium, Adamantium, Thornium, Supreme | Capacity, skipped above 2,147,483,647 J (default: Thornium up to x16, no Supreme) |
 

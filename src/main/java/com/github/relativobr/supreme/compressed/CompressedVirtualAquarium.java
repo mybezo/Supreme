@@ -18,8 +18,8 @@ import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 
 /**
- * Compressed {@link VirtualAquarium}: the fishing tool loses durability for every aquarium that runs,
- * so its remaining durability decides how many of the combined aquariums run (up to the multiplier).
+ * Compressed {@link VirtualAquarium}: all the combined aquariums run in one operation (limited by the free output
+ * space), the fishing tool is only used once per operation like in the original machine.
  * Every aquarium rolls its own catch.
  */
 public class CompressedVirtualAquarium extends VirtualAquarium implements Compressible, CompressedProcessor.Host {
