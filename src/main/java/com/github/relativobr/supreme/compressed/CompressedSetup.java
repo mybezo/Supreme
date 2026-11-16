@@ -206,7 +206,7 @@ public class CompressedSetup {
     ItemMeta meta = item.getItemMeta();
     if (meta != null) {
       String name = meta.hasDisplayName() ? meta.getDisplayName() : original.getItemName();
-      meta.setDisplayName(name + color(" &a(x" + multiplier + ")"));
+      meta.setDisplayName(name + color(" &a(" + multiplier + ")"));
 
       List<String> lore = new ArrayList<>();
       if (meta.hasLore() && meta.getLore() != null) {
