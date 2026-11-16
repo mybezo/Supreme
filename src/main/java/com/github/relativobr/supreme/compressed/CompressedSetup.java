@@ -14,6 +14,7 @@ import com.github.relativobr.supreme.machine.VirtualAquarium;
 import com.github.relativobr.supreme.machine.VirtualGarden;
 import com.github.relativobr.supreme.machine.tech.MobTechCollector;
 import com.github.relativobr.supreme.util.ItemGroups;
+import com.github.relativobr.supreme.util.UtilEnergy;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
@@ -22,6 +23,8 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.logging.Level;
 import javax.annotation.Nonnull;
 import lombok.experimental.UtilityClass;
@@ -170,7 +173,7 @@ public class CompressedSetup {
     ItemStack previous = original.getItem();
     int previousMultiplier = 1;
     for (int multiplier : available) {
-      SlimefunItemStack item = createItemStack(entry, original, multiplier);
+      SlimefunItemStack item = createItemStack(entry, original, values, multiplier);
       ItemStack input = previous.clone();
       input.setAmount(multiplier / previousMultiplier);
       ItemStack[] recipe = new ItemStack[9];
@@ -198,21 +201,54 @@ public class CompressedSetup {
 
   @Nonnull
   private static SlimefunItemStack createItemStack(@Nonnull Entry entry, @Nonnull SlimefunItem original,
-      int multiplier) {
+      @Nonnull int[] values, int multiplier) {
     ItemStack item = original.getItem().clone();
     ItemMeta meta = item.getItemMeta();
     if (meta != null) {
       String name = meta.hasDisplayName() ? meta.getDisplayName() : original.getItemName();
       meta.setDisplayName(name + color(" &a(x" + multiplier + ")"));
 
-      List<String> lore = meta.hasLore() && meta.getLore() != null ? new ArrayList<>(meta.getLore())
-          : new ArrayList<>();
+      List<String> lore = new ArrayList<>();
+      if (meta.hasLore() && meta.getLore() != null) {
+        for (String line : meta.getLore()) {
+          lore.add(scaleEnergyLine(line, entry.category(), values, multiplier));
+        }
+      }
       lore.add("");
       lore.add(color(Supreme.getLocalization().getString(entry.category().loreKey, multiplier)));
       meta.setLore(lore);
       item.setItemMeta(meta);
     }
     return new SlimefunItemStack(entry.id() + "_X" + multiplier, item);
+  }
+
+  // the energy lines of the original lore: LoreBuilder ("1000 J Buffer") and UtilEnergy ("1,000.00 J/tick")
+  private static final Pattern ENERGY_LINE = Pattern.compile(
+      "(\u26A1 \u00A77)(Infinite|[0-9][0-9.,]*)( J(?: Buffer| Capacity|/s|/tick))");
+
+  /**
+   * Replace the energy value of a lore line by the real value of the compressed item:
+   * the buffer/capacity and the energy per tick of the original item, multiplied.
+   */
+  @Nonnull
+  private static String scaleEnergyLine(@Nonnull String line, @Nonnull Category category, @Nonnull int[] values,
+      int multiplier) {
+    Matcher matcher = ENERGY_LINE.matcher(line);
+    if (!matcher.find()) {
+      return line;
+    }
+    String unit = matcher.group(3);
+    boolean storage = unit.endsWith("Buffer") || unit.endsWith("Capacity");
+    // machines and generators: {energy per tick, capacity/buffer}, capacitors: {capacity}
+    int index = category == Category.CAPACITORS ? 0 : (storage ? 1 : 0);
+    if (index >= values.length || (category == Category.CAPACITORS && !storage)) {
+      return line;
+    }
+    long value = (long) values[index] * multiplier;
+    String number = matcher.group(2);
+    String formatted = number.contains(",") || number.contains(".") ? UtilEnergy.format(value)
+        : String.valueOf(value);
+    return line.substring(0, matcher.start(2)) + formatted + line.substring(matcher.end(2));
   }
 
   @Nonnull
