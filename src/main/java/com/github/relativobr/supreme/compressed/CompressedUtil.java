@@ -11,7 +11,6 @@ import lombok.experimental.UtilityClass;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 
 /**
@@ -157,9 +156,9 @@ public class CompressedUtil {
   }
 
   /**
-   * How many units a tool-like input supports. A tool with durability is used once per operation
-   * (like in the original machine), however many units run, so it allows all the units. An item without
-   * durability is consumed like in the original machine, one per unit.
+   * How many units a tool-like input supports. A tool with durability is used up by one operation of all the
+   * units. An item without durability is consumed like in the original machine, one per unit.
+   * An unbreakable item is never used up.
    */
   public static int toolUnits(@Nullable ItemStack item, int maxUnits) {
     if (item == null) {
@@ -174,28 +173,18 @@ public class CompressedUtil {
 
   /**
    * Use a tool-like input for one operation of the given units, see {@link #toolUnits}:
-   * a tool with durability loses 2 durability once (it breaks like in the original machine),
-   * an item without durability is consumed once per unit, an unbreakable item is not used up.
+   * a tool with durability breaks (one tool per operation), an item without durability is consumed once per unit,
+   * an unbreakable item is not used up.
    */
   public static void useTool(@Nonnull BlockMenu inv, int slot, @Nonnull ItemStack item, int units) {
     ItemMeta meta = item.getItemMeta();
     if (meta == null || meta.isUnbreakable()) {
       return;
     }
-    int maxDurability = item.getType().getMaxDurability();
-    if (maxDurability <= 0) {
+    if (item.getType().getMaxDurability() > 0) {
+      inv.consumeItem(slot);
+    } else {
       inv.consumeItem(slot, units);
-      return;
-    }
-    if (meta instanceof Damageable damageable) {
-      int damage = damageable.getDamage() + 2;
-      if (damage >= maxDurability) {
-        inv.consumeItem(slot);
-      } else {
-        damageable.setDamage(damage);
-        item.setItemMeta(meta);
-        inv.replaceExistingItem(slot, item);
-      }
     }
   }
 }

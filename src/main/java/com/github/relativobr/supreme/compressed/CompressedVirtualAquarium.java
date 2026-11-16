@@ -19,7 +19,7 @@ import org.bukkit.inventory.ItemStack;
 
 /**
  * Compressed {@link VirtualAquarium}: all the combined aquariums run in one operation (limited by the free output
- * space), the fishing tool is only used once per operation like in the original machine.
+ * space), the fishing tool breaks after one operation (one tool per operation, unless unbreakable).
  * Every aquarium rolls its own catch.
  */
 public class CompressedVirtualAquarium extends VirtualAquarium implements Compressible, CompressedProcessor.Host {
