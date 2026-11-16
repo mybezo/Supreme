@@ -11,6 +11,7 @@ import lombok.experimental.UtilityClass;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 
 /**
@@ -156,9 +157,9 @@ public class CompressedUtil {
   }
 
   /**
-   * How many units a tool-like input supports. A tool with durability is used up by one operation of all the
-   * units. An item without durability is consumed like in the original machine, one per unit.
-   * An unbreakable item is never used up.
+   * How many units a tool-like input supports. A tool with durability always allows all the units
+   * (see {@link #useTool} for its durability). An item without durability is consumed like in the original
+   * machine, one per unit. An unbreakable item is never used up.
    */
   public static int toolUnits(@Nullable ItemStack item, int maxUnits) {
     if (item == null) {
@@ -172,19 +173,36 @@ public class CompressedUtil {
   }
 
   /**
-   * Use a tool-like input for one operation of the given units, see {@link #toolUnits}:
-   * a tool with durability breaks (one tool per operation), an item without durability is consumed once per unit,
-   * an unbreakable item is not used up.
+   * Use a tool-like input for one operation of the given units, see {@link #toolUnits}.
+   *
+   * <p>A tool with durability loses the durability of all the units at once (2 per unit, like the original
+   * machine loses per operation) and breaks when it runs out, the operation still produces the output of all
+   * the units. So a tool lasts {@code multiplier} times fewer operations than in the original machine, at least
+   * one (x64: a fishing rod breaks after 1 operation, an iron sword after 2).</p>
+   *
+   * <p>An item without durability is consumed once per unit, an unbreakable item is not used up.</p>
    */
   public static void useTool(@Nonnull BlockMenu inv, int slot, @Nonnull ItemStack item, int units) {
     ItemMeta meta = item.getItemMeta();
     if (meta == null || meta.isUnbreakable()) {
       return;
     }
-    if (item.getType().getMaxDurability() > 0) {
-      inv.consumeItem(slot);
-    } else {
+    int maxDurability = item.getType().getMaxDurability();
+    if (maxDurability <= 0) {
       inv.consumeItem(slot, units);
+      return;
+    }
+    if (meta instanceof Damageable damageable) {
+      long damage = damageable.getDamage() + 2L * units;
+      if (damage >= maxDurability) {
+        inv.consumeItem(slot);
+      } else {
+        damageable.setDamage((int) damage);
+        item.setItemMeta(meta);
+        inv.replaceExistingItem(slot, item);
+      }
+    } else {
+      inv.consumeItem(slot);
     }
   }
 }

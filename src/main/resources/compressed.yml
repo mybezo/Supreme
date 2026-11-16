@@ -4,8 +4,9 @@
 # Machines (Virtual Garden, Virtual Aquarium, Mob Collector, MobTech Collector):
 #   one operation runs up to N of the combined machines at once, decided by the input
 #   (seeds, bottles, Empty MobTechs, nearby mobs) and the free output space.
-#   Tools with durability (fishing rods, shears, swords...) break after one operation: one tool per operation
-#   (unbreakable tools are not used up).
+#   Tools with durability (fishing rods, shears, swords...) lose the durability of all the machines at once
+#   (2 per machine), so they last N times fewer operations, at least 1. The output is always for all the machines.
+#   Example x64: a fishing rod breaks after 1 operation, an iron sword after 2. Unbreakable tools are not used up.
 #   Same speed as the original, the energy is only used for the machines that run.
 # Generators: the energy per tick and the buffer are multiplied.
 # Capacitors: the capacity is multiplied.

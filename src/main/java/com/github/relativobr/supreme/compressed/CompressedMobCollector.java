@@ -19,8 +19,8 @@ import org.bukkit.inventory.ItemStack;
 
 /**
  * Compressed {@link MobCollector}. Glass bottles (and other items without durability) are consumed for every
- * collector that runs, so they limit how many of the combined collectors run. A tool with durability breaks after
- * one operation of all the collectors (one tool per operation, unless unbreakable). The mobs are only required nearby,
+ * collector that runs, so they limit how many of the combined collectors run. A tool with durability loses the
+ * durability of all the collectors at once, so it lasts multiplier times fewer operations (unless unbreakable). The mobs are only required nearby,
  * they are not consumed.
  */
 public class CompressedMobCollector extends MobCollector implements Compressible, CompressedProcessor.Host {
