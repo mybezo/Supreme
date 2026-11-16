@@ -349,8 +349,17 @@ public class MobCollector extends SimpleItemWithLargeContainerMachine {
     return null;
   }
 
+  public int getMobRange() {
+    return mobRange;
+  }
+
   @Nonnull
-  private List<LivingEntity> getNearbyMobs(@Nonnull Block b) {
+  protected Set<MobCollectorMachineRecipe> getMobCollectorRecipes() {
+    return mobCollectorMachineRecipes;
+  }
+
+  @Nonnull
+  protected List<LivingEntity> getNearbyMobs(@Nonnull Block b) {
     List<LivingEntity> mobs = new ArrayList<>();
     for (Entity n : b.getWorld().getNearbyEntities(b.getLocation(), mobRange, mobRange, mobRange,
         LivingEntity.class::isInstance)) {

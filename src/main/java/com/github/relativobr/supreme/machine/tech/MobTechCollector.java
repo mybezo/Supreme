@@ -194,6 +194,15 @@ public class MobTechCollector extends SimpleItemWithLargeContainerMachine {
     return new ItemStack(Material.IRON_SWORD);
   }
 
+  public int getMobRange() {
+    return mobRange;
+  }
+
+  @Nonnull
+  protected Set<MobTechCollectorMachineRecipe> getMobTechRecipes() {
+    return MobTechCollectorMachineRecipes;
+  }
+
   public final MobTechCollector setMobRange(int value) {
     this.mobRange = value;
     return this;

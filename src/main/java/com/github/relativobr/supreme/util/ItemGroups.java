@@ -3,7 +3,6 @@ package com.github.relativobr.supreme.util;
 import com.github.relativobr.supreme.Supreme;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
-import io.github.thebusybiscuit.slimefun4.api.items.groups.NestedItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.groups.SubItemGroup;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import org.bukkit.Material;
@@ -11,7 +10,7 @@ import org.bukkit.NamespacedKey;
 
 public class ItemGroups {
 
-  public static NestedItemGroup MULTI_CATEGORY = new NestedItemGroup(new NamespacedKey(Supreme.inst(), "SUPREME_MAIN"),
+  public static SupremeMainGroup MULTI_CATEGORY = new SupremeMainGroup(new NamespacedKey(Supreme.inst(), "SUPREME_MAIN"),
       new CustomItemStack(
           new SlimefunItemStack("SUPREME_MAIN_ITEM", "c69e3e6e5b2b92f0beb368b738b993d7ba225bf9bb2758bfc9fc2daba4a5a7d",
               "Main item"), Supreme.getLocalization().getCategoryName("main")));

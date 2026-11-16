@@ -10,7 +10,12 @@ public class EnergyCapacitor extends Capacitor {
 
   public EnergyCapacitor(ItemGroup categories, SlimefunItemStack item, ItemStack[] recipe,
       int capacity) {
-    super(categories, capacity, item, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
+    this(categories, item, RecipeType.ENHANCED_CRAFTING_TABLE, recipe, capacity);
+  }
+
+  public EnergyCapacitor(ItemGroup categories, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe,
+      int capacity) {
+    super(categories, capacity, item, recipeType, recipe);
   }
 
 }

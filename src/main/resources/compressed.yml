@@ -1,0 +1,76 @@
+# Compressed Machine, Compressed Generator and Compressed Capacitor settings
+# A compressed item combines several of the original item into one.
+#
+# Machines (Virtual Garden, Virtual Aquarium, Mob Collector, MobTech Collector):
+#   one operation runs up to N of the combined machines at once, decided by the input
+#   (seeds, tool durability, bottles, Empty MobTechs, nearby mobs) and the free output space.
+#   Same speed as the original, the energy is only used for the machines that run.
+# Generators: the energy per tick and the buffer are multiplied.
+# Capacitors: the capacity is multiplied.
+#
+# Recipes (Compressor):
+#   x8  = 8 of the original item
+#   x16 = 2 of the x8 item
+#   x32 = 2 of the x16 item
+#   x64 = 2 of the x32 item
+#
+# Only the highest enabled multiplier is listed in the guide,
+# the lower multipliers are still craftable (click them in the recipe to view them).
+# Multipliers whose energy or capacity would exceed 2,147,483,647 are skipped automatically
+# (with the default values: Thornium Capacitor up to x16, no Supreme Capacitor).
+#
+# Changes require a server restart.
+# Missing options are added automatically, existing values are kept.
+
+# Enable/disable all the compressed items
+enabled: true
+
+# Enable/disable each multiplier.
+# Disabling a multiplier also disables all the multipliers above it,
+# because their recipes need the previous multiplier.
+multipliers:
+  x8: true
+  x16: true
+  x32: true
+  x64: true
+
+# Enable/disable the compressed versions (all multipliers) of each machine
+machines:
+  SUPREME_VIRTUAL_GARDEN_I: true
+  SUPREME_VIRTUAL_GARDEN_II: true
+  SUPREME_VIRTUAL_GARDEN_III: true
+  SUPREME_VIRTUAL_AQUARIUM_I: true
+  SUPREME_VIRTUAL_AQUARIUM_II: true
+  SUPREME_VIRTUAL_AQUARIUM_III: true
+  SUPREME_MOB_COLLECTOR_MACHINE_I: true
+  SUPREME_MOB_COLLECTOR_MACHINE_II: true
+  SUPREME_MOB_COLLECTOR_MACHINE_III: true
+  MOB_TECH_COLLECTOR_MACHINE: true
+  SUPREME_MOB_TECH_COLLECTOR_MACHINE_II: true
+  SUPREME_MOB_TECH_COLLECTOR_MACHINE_III: true
+
+# Enable/disable the compressed versions (all multipliers) of each generator
+generators:
+  SUPREME_BASIC_IGNIS_GENERATOR: true
+  SUPREME_IGNIS_GENERATOR: true
+  SUPREME_BASIC_VENTUS_GENERATOR: true
+  SUPREME_VENTUS_GENERATOR: true
+  SUPREME_BASIC_AQUA_GENERATOR: true
+  SUPREME_AQUA_GENERATOR: true
+  SUPREME_BASIC_LUX_GENERATOR: true
+  SUPREME_LUX_GENERATOR: true
+  SUPREME_BASIC_LUMIUM_GENERATOR: true
+  SUPREME_LUMIUM_GENERATOR: true
+  SUPREME_THORNIUM_GENERATOR: true
+  SUPREME_SUPREME_GENERATOR: true
+  SUPREME_GENERATOR_MOB_BASIC: true
+  SUPREME_GENERATOR_MOB_MEDIUM: true
+  SUPREME_GENERATOR_MOB_ADVANCED: true
+
+# Enable/disable the compressed versions (all multipliers) of each capacitor
+capacitors:
+  SUPREME_AURUM_CAPACITOR: true
+  SUPREME_TITANIUM_CAPACITOR: true
+  SUPREME_ADAMANTIUM_CAPACITOR: true
+  SUPREME_THORNIUM_CAPACITOR: true
+  SUPREME_SUPREME_CAPACITOR: true

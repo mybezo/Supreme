@@ -103,6 +103,11 @@ public class VirtualAquarium extends SimpleItemWithLargeContainerMachine {
   }
 
 
+  @Nonnull
+  protected Set<VirtualAquariumMachineRecipe> getVirtualAquariumRecipes() {
+    return virtualAquariumMachineRecipe;
+  }
+
   public void addProduce(@Nonnull VirtualAquariumMachineRecipe produce) {
     Validate.notNull(produce, "A produce cannot be null");
     this.virtualAquariumMachineRecipe.add(produce);

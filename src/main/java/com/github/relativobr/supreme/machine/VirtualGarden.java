@@ -90,6 +90,11 @@ public class VirtualGarden extends SimpleItemWithLargeContainerMachine {
   }
 
 
+  @Nonnull
+  protected Set<VirtualGardenMachineRecipe> getVirtualGardenRecipes() {
+    return virtualGardenMachineRecipes;
+  }
+
   public void addProduce(@Nonnull VirtualGardenMachineRecipe produce) {
     Validate.notNull(produce, "A produce cannot be null");
     this.virtualGardenMachineRecipes.add(produce);

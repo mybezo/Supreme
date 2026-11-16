@@ -4,6 +4,7 @@ import com.github.relativobr.supreme.resource.SupremeComponents;
 import com.github.relativobr.supreme.util.ItemGroups;
 import com.github.relativobr.supreme.util.SupremeItemStack;
 import com.github.relativobr.supreme.util.UtilEnergy;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineTier;
@@ -77,7 +78,15 @@ public class GeneratorMob extends AbstractEnergyProvider {
   private int mobRange = 3;
 
   public GeneratorMob(SlimefunItemStack item, ItemStack[] recipe) {
-    super(ItemGroups.ELECTRIC_CATEGORY, item, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
+    this(ItemGroups.ELECTRIC_CATEGORY, item, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
+  }
+
+  protected GeneratorMob(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    super(itemGroup, item, recipeType, recipe);
+  }
+
+  public int getMobRange() {
+    return mobRange;
   }
 
   public final GeneratorMob setEnergy(int value) {
