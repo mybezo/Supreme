@@ -158,7 +158,8 @@ public class MobTechCollector extends SimpleItemWithLargeContainerMachine {
           produce.getClass();
           if (this.isAnimalNearby(invBlock, produce::test)) {
             inv.consumeItem(slot, 1);
-            return produce;
+            // the time of this machine (machine-time in config.yml)
+            return new MachineRecipe(getTimeProcess(), produce.getInput(), produce.getOutput());
           }
         }
       }

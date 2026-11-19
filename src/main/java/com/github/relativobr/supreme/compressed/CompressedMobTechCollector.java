@@ -92,7 +92,7 @@ public class CompressedMobTechCollector extends MobTechCollector implements Comp
         matching.get(i).remove();
       }
       consumeEmptyTechs(inv, units);
-      return new CompressedProcessor.Operation(recipe.getTicks(), units, output,
+      return new CompressedProcessor.Operation(getTimeProcess() * 2, units, output,
           () -> CompressedUtil.times(perUnit, units));
     }
     if (outputFull) {

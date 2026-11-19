@@ -67,7 +67,7 @@ public class CompressedVirtualGarden extends VirtualGarden implements Compressib
           outputFull = true;
           continue;
         }
-        return new CompressedProcessor.Operation(recipe.getTicks(), units, perUnit.get(0),
+        return new CompressedProcessor.Operation(getTimeProcess() * 2, units, perUnit.get(0),
             () -> CompressedUtil.times(perUnit, units));
       }
     }

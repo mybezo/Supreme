@@ -71,7 +71,7 @@ public class CompressedVirtualAquarium extends VirtualAquarium implements Compre
         }
         CompressedUtil.useTool(inv, slot, tool, units);
         ItemStack display = catches.length > 0 && catches[0] != null ? catches[0] : new ItemStack(Material.COD);
-        return new CompressedProcessor.Operation(recipe.getTicks(), units, display, () -> roll(catches, units));
+        return new CompressedProcessor.Operation(getTimeProcess() * 2, units, display, () -> roll(catches, units));
       }
     }
     if (outputFull) {

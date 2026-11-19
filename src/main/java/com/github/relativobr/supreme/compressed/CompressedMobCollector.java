@@ -90,7 +90,7 @@ public class CompressedMobCollector extends MobCollector implements Compressible
         } else {
           CompressedUtil.useTool(inv, slot, item, units);
         }
-        return new CompressedProcessor.Operation(recipe.getTicks(), units, perUnit.get(0),
+        return new CompressedProcessor.Operation(getTimeProcess() * 2, units, perUnit.get(0),
             () -> CompressedUtil.times(perUnit, units));
       }
     }

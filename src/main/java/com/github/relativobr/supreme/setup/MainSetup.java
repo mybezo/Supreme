@@ -39,6 +39,9 @@ public class MainSetup {
       SetupSupremeQuarry.setup(sup);
     }
 
+    // process time of every machine (machine-time in config.yml), before the compressed machines copy it
+    SetupMachineTime.setup(sup);
+
     // compressed versions of the registered machines, generators and capacitors
     CompressedSetup.setup(sup);
 
