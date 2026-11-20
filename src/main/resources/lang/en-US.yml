@@ -10,6 +10,9 @@ categories:
   tools: "&4Supreme Tools"
   armor: "&4Supreme Armor"
   weapons: "&4Supreme Weapons"
+  compressed_items: "&4Compressed Items"
+  compressed_machines: "&4Compressed Machine"
+  compressed_generators: "&4Compressed Generator"
 items:
   supreme_adamantium_helmet:
     name: "&f&lAdamantium Helmet"
@@ -775,3 +778,8 @@ messages:
   no-input: "&cPlease put in items."
   output-no-space: "&cNo output space!"
   not-enough-power: "&cNot enough energy."
+compressed:
+  multiplier: "&bMultiplier: &ax{0}"
+  lore-machine: "&7Combines &f{0} &7machines into one."
+  lore-generator: "&7Combines &f{0} &7generators into one."
+  lore-capacitor: "&7Combines &f{0} &7capacitors into one."

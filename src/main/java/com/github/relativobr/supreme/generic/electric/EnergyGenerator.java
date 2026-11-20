@@ -20,7 +20,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-public final class EnergyGenerator extends MenuBlock implements EnergyNetProvider {
+public class EnergyGenerator extends MenuBlock implements EnergyNetProvider {
 
   private int energy;
   private int buffer;
@@ -30,7 +30,19 @@ public final class EnergyGenerator extends MenuBlock implements EnergyNetProvide
 
 
   public EnergyGenerator(ItemGroup categories, SlimefunItemStack item, ItemStack[] recipe) {
-    super(categories, item, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
+    this(categories, item, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
+  }
+
+  public EnergyGenerator(ItemGroup categories, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    super(categories, item, recipeType, recipe);
+  }
+
+  public int getEnergy() {
+    return energy;
+  }
+
+  public int getBuffer() {
+    return buffer;
   }
 
   public GenerationType getType() {

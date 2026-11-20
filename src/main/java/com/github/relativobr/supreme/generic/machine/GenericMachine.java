@@ -420,7 +420,12 @@ public class GenericMachine extends AContainer implements NotHopperable, RecipeD
   }
 
   private void revertConsumedItem(Block b, BlockMenu inv) {
-    for (Map.Entry<ItemStack, Integer> consumedEntry : getConsumedItems(b).entrySet()) {
+    Map<ItemStack, Integer> consumedItems = getConsumedItems(b);
+    if (consumedItems == null) {
+      // nothing consumed: the machine is idle or does not use the generic processing
+      return;
+    }
+    for (Map.Entry<ItemStack, Integer> consumedEntry : consumedItems.entrySet()) {
       ItemStack consumedItem = consumedEntry.getKey();
       int amount = consumedEntry.getValue();
       if (consumedItem != null && consumedItem.getType() != Material.AIR) {
@@ -434,7 +439,7 @@ public class GenericMachine extends AContainer implements NotHopperable, RecipeD
         }
       }
     }
-    getConsumedItems(b).clear();
+    consumedItems.clear();
   }
 
   private void endProcessTicks(Block b, BlockMenu inv, ItemStack[] result) {

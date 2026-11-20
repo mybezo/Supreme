@@ -90,6 +90,11 @@ public class VirtualGarden extends SimpleItemWithLargeContainerMachine {
   }
 
 
+  @Nonnull
+  protected Set<VirtualGardenMachineRecipe> getVirtualGardenRecipes() {
+    return virtualGardenMachineRecipes;
+  }
+
   public void addProduce(@Nonnull VirtualGardenMachineRecipe produce) {
     Validate.notNull(produce, "A produce cannot be null");
     this.virtualGardenMachineRecipes.add(produce);
@@ -191,8 +196,10 @@ public class VirtualGarden extends SimpleItemWithLargeContainerMachine {
     } else {
       MachineRecipe next = findNextRecipe(inv);
       if (next != null) {
-        processing.put(b, next);
-        progress.put(b, next.getTicks());
+        // the time of this machine (machine-time in config.yml), not the shared time of the recipe
+        MachineRecipe timed = new MachineRecipe(getTimeProcess(), next.getInput(), next.getOutput());
+        processing.put(b, timed);
+        progress.put(b, timed.getTicks());
       } else {
         updateStatusReset(inv);
       }

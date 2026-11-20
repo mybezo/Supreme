@@ -23,6 +23,22 @@ options:
   custom-bc: false
   machine-max-attempt-consumed: 30
 # -------------------------------
+# machine-time
+# -------------------------------
+# Process time of every machine in seconds (each tier separately),
+# with the default Slimefun ticker (every 10 game ticks = 0.5 second).
+# Quarries: the time between two items.
+# Decimals are allowed (minimum 0.5 second, 1 Slimefun tick).
+# Missing machines are added automatically with their current time,
+# existing values are kept. Changes require a server restart.
+# Compressed machines use the time of their original machine.
+# Example:
+#   SUPREME_VIRTUAL_GARDEN_I: 15
+#   SUPREME_VIRTUAL_GARDEN_II: 3
+#   SUPREME_VIRTUAL_GARDEN_III: 1
+# -------------------------------
+machine-time: {}
+# -------------------------------
 # quarry-custom-output
 # -------------------------------
 # acceptable chance values per quarry: 1 ~ 100

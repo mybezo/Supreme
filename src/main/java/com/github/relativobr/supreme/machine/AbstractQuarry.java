@@ -63,6 +63,8 @@ public class AbstractQuarry extends SlimefunItem implements EnergyNetComponent {
   private int energyCapacity = -1;
   private boolean effect = true;
   private int delaySpeed = 1;
+  // production delay in Slimefun ticks (machine-time in config.yml), null: custom-ticker-delay * delaySpeed
+  private Integer productionDelay = null;
 
   private SupremeQuarryOutput output;
 
@@ -98,7 +100,7 @@ public class AbstractQuarry extends SlimefunItem implements EnergyNetComponent {
     // The delay is not same as minecraft tick,
     // but it's based on 'custom-ticker-delay' config.
     int delay = tickDelayThreshold.getOrDefault(location, 0);
-    if (delay < (getSupremeOptions().getCustomTickerDelay() * delaySpeed)) {
+    if (delay < getProductionDelay()) {
       tickDelayThreshold.put(location, delay + 1);
       return;
     }
@@ -193,7 +195,7 @@ public class AbstractQuarry extends SlimefunItem implements EnergyNetComponent {
     final int energyCharge = getCharge(b.getLocation());
     final boolean blockEnabled = isEnabled(b);
     final String powerCharged = LoreBuilder.powerCharged(energyCharge, getCapacity());
-    final String infoSpeed = UtilEnergy.timePerItem((getSupremeOptions().getCustomTickerDelay() * delaySpeed) / 2);
+    final String infoSpeed = UtilEnergy.timePerItem(getProductionDelay() / 2.0);
     if (energyCharge < getEnergyConsumption() || !blockEnabled) {
       menu.addItem(InventoryRecipe.QUARRY_STATUS,
           new CustomItemStack(Material.OBSIDIAN, ChatColor.RED + "NOT-ACTIVE", powerPerSecond, powerCharged,
@@ -284,6 +286,18 @@ public class AbstractQuarry extends SlimefunItem implements EnergyNetComponent {
 
   public AbstractQuarry setEffect(boolean effect) {
     this.effect = effect;
+    return this;
+  }
+
+  /**
+   * @return the delay between two productions, in Slimefun ticks
+   */
+  public int getProductionDelay() {
+    return productionDelay != null ? productionDelay : getSupremeOptions().getCustomTickerDelay() * delaySpeed;
+  }
+
+  public AbstractQuarry setProductionDelay(int productionDelay) {
+    this.productionDelay = Math.max(0, productionDelay);
     return this;
   }
 

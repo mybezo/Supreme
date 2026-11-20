@@ -9,6 +9,9 @@ categories:
   tools: "&4至尊工具"
   armor: "&4至尊盔甲"
   weapons: "&4至尊武器"
+  compressed_items: "&4压缩物品"
+  compressed_machines: "&4压缩机器"
+  compressed_generators: "&4压缩发电机"
 items:
   supreme_adamantium_helmet:
     name: "&f&l精金头盔"
@@ -774,3 +777,8 @@ messages:
   no-input: "&c请在此放入物品"
   output-no-space: "&c无输出空间!"
   not-enough-power: "&c无足够电量!"
+compressed:
+  multiplier: "&b倍率: &ax{0}"
+  lore-machine: "&7将 &f{0} &7台机器合而为一。"
+  lore-generator: "&7将 &f{0} &7台发电机合而为一。"
+  lore-capacitor: "&7将 &f{0} &7个电容合而为一。"

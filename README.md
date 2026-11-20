@@ -26,6 +26,7 @@ Magic, Rare, Epic, Legendary and **Supreme** tiers.
 - [Machines](#machines)
 - [Generators & Capacitors](#generators--capacitors)
 - [Gear: Weapons, Tools & Armor](#gear-weapons-tools--armor)
+- [Compressed Items](#compressed-items)
 - [Resources](#resources)
 - [Configuration](#configuration)
 - [Building from source](#building-from-source)
@@ -165,6 +166,21 @@ All gear is crafted in the **Gear Fabricator** and is **Soulbound**. Thornium ge
 
 ¹ Requires Minecraft 1.21.11+. On older servers the spear set is skipped automatically.
 ² Thornium tiers only.
+
+## Compressed Items
+
+Combine several machines, generators or capacitors into one block. Every item has **x8, x16, x32 and x64**
+versions, crafted in the Slimefun **Compressor**: x8 from 8 of the original item, then 2 of the previous tier.
+Open them from the **Compressed Items** button (slot 40) of the Supreme guide menu. Only the highest tier is listed,
+the lower tiers can be viewed from the recipes.
+
+| Kind | Items | What is multiplied |
+|---|---|---|
+| **Compressed Machine** | Virtual Garden, Virtual Aquarium, Mob Collector, MobTech Collector (I–III) | One operation runs up to N machines at once, limited by the input (seeds, bottles, Empty MobTechs, nearby mobs) and the free output space. Tools lose the durability of all the machines at once (x64: a fishing rod lasts 1 operation, an iron sword 2). Same speed, energy only for the machines that run. |
+| **Compressed Generator** | All Supreme generators and Generator Mob | Energy per tick and buffer |
+| **Compressed Capacitor** | Aurum, Titanium, Adamantium, Thornium, Supreme | Capacity, skipped above 2,147,483,647 J (default: Thornium up to x16, no Supreme) |
+
+Configure them in `plugins/Supreme/compressed.yml` (restart required): enable all, each tier, or each item.
 
 ## Resources
 

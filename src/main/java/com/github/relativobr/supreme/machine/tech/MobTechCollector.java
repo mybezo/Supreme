@@ -158,7 +158,8 @@ public class MobTechCollector extends SimpleItemWithLargeContainerMachine {
           produce.getClass();
           if (this.isAnimalNearby(invBlock, produce::test)) {
             inv.consumeItem(slot, 1);
-            return produce;
+            // the time of this machine (machine-time in config.yml)
+            return new MachineRecipe(getTimeProcess(), produce.getInput(), produce.getOutput());
           }
         }
       }
@@ -192,6 +193,15 @@ public class MobTechCollector extends SimpleItemWithLargeContainerMachine {
   @Override
   public ItemStack getProgressBar() {
     return new ItemStack(Material.IRON_SWORD);
+  }
+
+  public int getMobRange() {
+    return mobRange;
+  }
+
+  @Nonnull
+  protected Set<MobTechCollectorMachineRecipe> getMobTechRecipes() {
+    return MobTechCollectorMachineRecipes;
   }
 
   public final MobTechCollector setMobRange(int value) {
