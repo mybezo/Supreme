@@ -39,6 +39,9 @@ public class MainSetup {
       SetupSupremeQuarry.setup(sup);
     }
 
+    // one row per kind of item in the weapons, tools and armor groups
+    SetupGuideLayout.setup(sup);
+
     // process time of every machine (machine-time in config.yml), before the compressed machines copy it
     SetupMachineTime.setup(sup);
 

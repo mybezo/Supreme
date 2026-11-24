@@ -13,7 +13,9 @@ import io.github.thebusybiscuit.slimefun4.implementation.guide.SurvivalSlimefunG
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -34,6 +36,7 @@ public class SupremeMainGroup extends NestedItemGroup {
   private static final int LAST_SLOT = 44;
 
   private final List<SubItemGroup> subGroups = new ArrayList<>();
+  private final Map<SubItemGroup, ItemGroup> views = new HashMap<>();
   private int fixedSlot = -1;
   private ItemGroup fixedGroup;
 
@@ -48,6 +51,14 @@ public class SupremeMainGroup extends NestedItemGroup {
   public void setFixedGroup(int slot, @Nullable ItemGroup group) {
     this.fixedSlot = slot;
     this.fixedGroup = group;
+  }
+
+  /**
+   * Open {@code view} instead of {@code group} when the group is clicked in this menu
+   * (a different layout of the same items).
+   */
+  public void setView(@Nonnull SubItemGroup group, @Nonnull ItemGroup view) {
+    views.put(group, view);
   }
 
   @Override
@@ -118,9 +129,10 @@ public class SupremeMainGroup extends NestedItemGroup {
         continue;
       }
       SubItemGroup group = visible.get(index++);
+      ItemGroup target = views.getOrDefault(group, group);
       menu.addItem(slot, group.getItem(p));
       menu.addMenuClickHandler(slot, (pl, s, item, action) -> {
-        SlimefunGuide.openItemGroup(profile, group, mode, 1);
+        SlimefunGuide.openItemGroup(profile, target, mode, 1);
         return false;
       });
     }

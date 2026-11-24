@@ -34,7 +34,7 @@ public final class WeaponsBasic {
   public static final SlimefunItemStack TITANIUM_TRIDENT = new SupremeItemStack("SUPREME_TITANIUM_TRIDENT",
       Material.TRIDENT);
   public static final ItemStack[] RECIPE_TITANIUM_TRIDENT = {SupremeComponents.TITANIUM_PLATE, SupremeComponents.TITANIUM_PLATE,
-      SupremeComponents.TITANIUM_PLATE, null, new ItemStack(Material.PRISMARINE_CRYSTALS), null, null,
+      SupremeComponents.TITANIUM_PLATE, null, SlimefunItems.STAFF_WATER, null, null,
       SlimefunItems.STAFF_WATER, null};
 
   public static final SlimefunItemStack AURUM_MACE = new SupremeItemStack("SUPREME_AURUM_MACE", Material.MACE);
@@ -45,7 +45,7 @@ public final class WeaponsBasic {
   public static final SlimefunItemStack AURUM_TRIDENT = new SupremeItemStack("SUPREME_AURUM_TRIDENT",
       Material.TRIDENT);
   public static final ItemStack[] RECIPE_AURUM_TRIDENT = {SupremeComponents.AURUM_PLATE, SupremeComponents.AURUM_PLATE,
-      SupremeComponents.AURUM_PLATE, null, new ItemStack(Material.PRISMARINE_CRYSTALS), null, null,
+      SupremeComponents.AURUM_PLATE, null, SlimefunItems.STAFF_WATER, null, null,
       SlimefunItems.STAFF_WATER, null};
 
   public static final SlimefunItemStack ADAMANTIUM_MACE = new SupremeItemStack("SUPREME_ADAMANTIUM_MACE", Material.MACE);
@@ -56,6 +56,6 @@ public final class WeaponsBasic {
   public static final SlimefunItemStack ADAMANTIUM_TRIDENT = new SupremeItemStack("SUPREME_ADAMANTIUM_TRIDENT",
       Material.TRIDENT);
   public static final ItemStack[] RECIPE_ADAMANTIUM_TRIDENT = {SupremeComponents.ADAMANTIUM_PLATE, SupremeComponents.ADAMANTIUM_PLATE,
-      SupremeComponents.ADAMANTIUM_PLATE, null, new ItemStack(Material.PRISMARINE_CRYSTALS), null, null,
+      SupremeComponents.ADAMANTIUM_PLATE, null, SlimefunItems.STAFF_WATER, null, null,
       SlimefunItems.STAFF_WATER, null};
 }
