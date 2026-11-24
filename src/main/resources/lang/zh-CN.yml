@@ -409,6 +409,114 @@ items:
       - "&f&l钍合金制的至尊长矛"
       - ""
       - "&3至尊武器"
+  supreme_titanium_mace:
+    name: "&f&l钛合金重锤"
+    lore:
+      - "&f&l钛合金制的重锤"
+      - ""
+      - "&3至尊武器"
+  supreme_aurum_mace:
+    name: "&f&l古金重锤"
+    lore:
+      - "&f&l古金制的重锤"
+      - ""
+      - "&3至尊武器"
+  supreme_adamantium_mace:
+    name: "&f&l精金重锤"
+    lore:
+      - "&f&l精金制的重锤"
+      - ""
+      - "&3至尊武器"
+  supreme_mace_thornium:
+    name: "&f&l钍合金重锤"
+    lore:
+      - "&f&l钍合金制的重锤"
+      - ""
+      - "&3至尊武器"
+  supreme_mace_magic:
+    name: "&a&l魔法重锤"
+    lore:
+      - "&f&l钍合金制的魔法重锤"
+      - ""
+      - "&3至尊武器"
+  supreme_mace_rare:
+    name: "&b&l稀有重锤"
+    lore:
+      - "&f&l钍合金制的稀有重锤"
+      - ""
+      - "&3至尊武器"
+  supreme_mace_epic:
+    name: "&d&l史诗重锤"
+    lore:
+      - "&f&l钍合金制的史诗重锤"
+      - ""
+      - "&3至尊武器"
+  supreme_mace_legendary:
+    name: "&6&l传说重锤"
+    lore:
+      - "&f&l钍合金制的传说重锤"
+      - ""
+      - "&3至尊武器"
+  supreme_mace_supreme:
+    name: "&4&l至尊重锤"
+    lore:
+      - "&f&l钍合金制的至尊重锤"
+      - ""
+      - "&3至尊武器"
+  supreme_titanium_trident:
+    name: "&f&l钛合金三叉戟"
+    lore:
+      - "&f&l钛合金制的三叉戟"
+      - ""
+      - "&3至尊武器"
+  supreme_aurum_trident:
+    name: "&f&l古金三叉戟"
+    lore:
+      - "&f&l古金制的三叉戟"
+      - ""
+      - "&3至尊武器"
+  supreme_adamantium_trident:
+    name: "&f&l精金三叉戟"
+    lore:
+      - "&f&l精金制的三叉戟"
+      - ""
+      - "&3至尊武器"
+  supreme_trident_thornium:
+    name: "&f&l钍合金三叉戟"
+    lore:
+      - "&f&l钍合金制的三叉戟"
+      - ""
+      - "&3至尊武器"
+  supreme_trident_magic:
+    name: "&a&l魔法三叉戟"
+    lore:
+      - "&f&l钍合金制的魔法三叉戟"
+      - ""
+      - "&3至尊武器"
+  supreme_trident_rare:
+    name: "&b&l稀有三叉戟"
+    lore:
+      - "&f&l钍合金制的稀有三叉戟"
+      - ""
+      - "&3至尊武器"
+  supreme_trident_epic:
+    name: "&d&l史诗三叉戟"
+    lore:
+      - "&f&l钍合金制的史诗三叉戟"
+      - ""
+      - "&3至尊武器"
+  supreme_trident_legendary:
+    name: "&6&l传说三叉戟"
+    lore:
+      - "&f&l钍合金制的传说三叉戟"
+      - ""
+      - "&3至尊武器"
+  supreme_trident_supreme:
+    name: "&4&l至尊三叉戟"
+    lore:
+      - "&f&l钍合金制的至尊三叉戟"
+      - ""
+      - "&3至尊武器"
   supreme_adamantium_axe:
     name: "&f&l精金斧"
     lore:

@@ -71,4 +71,40 @@ public class WeaponsThornium {
 
   public static final SlimefunItemStack THORNIUM_SWORD_SUPREME = new SupremeItemStack("SUPREME_SWORD_SUPREME",
       Material.NETHERITE_SWORD);
+
+  public static final SlimefunItemStack THORNIUM_MACE = new SupremeItemStack("SUPREME_MACE_THORNIUM", Material.MACE);
+  public static final ItemStack[] RECIPE_THORNIUM_MACE = {SupremeComponents.THORNIUM_INGOT,
+      SupremeComponents.THORNIUM_INGOT, SupremeComponents.THORNIUM_INGOT, SupremeComponents.THORNIUM_INGOT,
+      new ItemStack(Material.HEAVY_CORE), SupremeComponents.THORNIUM_INGOT, null, SupremeCetrus.CETRUS_VENTUS, null};
+
+  public static final SlimefunItemStack THORNIUM_MACE_MAGIC = new SupremeItemStack("SUPREME_MACE_MAGIC", Material.MACE);
+
+  public static final SlimefunItemStack THORNIUM_MACE_RARE = new SupremeItemStack("SUPREME_MACE_RARE", Material.MACE);
+
+  public static final SlimefunItemStack THORNIUM_MACE_EPIC = new SupremeItemStack("SUPREME_MACE_EPIC", Material.MACE);
+
+  public static final SlimefunItemStack THORNIUM_MACE_LEGENDARY = new SupremeItemStack("SUPREME_MACE_LEGENDARY", Material.MACE);
+
+  public static final SlimefunItemStack THORNIUM_MACE_SUPREME = new SupremeItemStack("SUPREME_MACE_SUPREME", Material.MACE);
+
+  public static final SlimefunItemStack THORNIUM_TRIDENT = new SupremeItemStack("SUPREME_TRIDENT_THORNIUM",
+      Material.TRIDENT);
+  public static final ItemStack[] RECIPE_THORNIUM_TRIDENT = {SupremeComponents.THORNIUM_INGOT,
+      SupremeComponents.THORNIUM_INGOT, SupremeComponents.THORNIUM_INGOT, null,
+      new ItemStack(Material.HEART_OF_THE_SEA), null, null, SupremeCetrus.CETRUS_AQUA, null};
+
+  public static final SlimefunItemStack THORNIUM_TRIDENT_MAGIC = new SupremeItemStack("SUPREME_TRIDENT_MAGIC",
+      Material.TRIDENT);
+
+  public static final SlimefunItemStack THORNIUM_TRIDENT_RARE = new SupremeItemStack("SUPREME_TRIDENT_RARE",
+      Material.TRIDENT);
+
+  public static final SlimefunItemStack THORNIUM_TRIDENT_EPIC = new SupremeItemStack("SUPREME_TRIDENT_EPIC",
+      Material.TRIDENT);
+
+  public static final SlimefunItemStack THORNIUM_TRIDENT_LEGENDARY = new SupremeItemStack("SUPREME_TRIDENT_LEGENDARY",
+      Material.TRIDENT);
+
+  public static final SlimefunItemStack THORNIUM_TRIDENT_SUPREME = new SupremeItemStack("SUPREME_TRIDENT_SUPREME",
+      Material.TRIDENT);
 }

@@ -101,6 +101,32 @@ public class AbstractWeapons extends SlimefunItem implements Soulbound, NotPlace
         ItemTier.getSupremeRecipe(WeaponsThornium.THORNIUM_SHIELD_LEGENDARY));
     shieldSupreme.register(sup);
 
+    // mace and trident sets
+    EnchantsAndEffectsUtil.addGearBasicEnchants(WeaponsBasic.TITANIUM_MACE, WeaponsBasic.AURUM_MACE,
+        WeaponsBasic.ADAMANTIUM_MACE);
+    EnchantsAndEffectsUtil.addGearThorniumEnchants(WeaponsThornium.THORNIUM_MACE, WeaponsThornium.THORNIUM_MACE_MAGIC, WeaponsThornium.THORNIUM_MACE_RARE, WeaponsThornium.THORNIUM_MACE_EPIC, WeaponsThornium.THORNIUM_MACE_LEGENDARY, WeaponsThornium.THORNIUM_MACE_SUPREME);
+    new AbstractWeapons(WeaponsBasic.TITANIUM_MACE, WeaponsBasic.RECIPE_TITANIUM_MACE).register(sup);
+    new AbstractWeapons(WeaponsBasic.AURUM_MACE, WeaponsBasic.RECIPE_AURUM_MACE).register(sup);
+    new AbstractWeapons(WeaponsBasic.ADAMANTIUM_MACE, WeaponsBasic.RECIPE_ADAMANTIUM_MACE).register(sup);
+    new AbstractWeapons(WeaponsThornium.THORNIUM_MACE, WeaponsThornium.RECIPE_THORNIUM_MACE).register(sup);
+    new AbstractWeapons(WeaponsThornium.THORNIUM_MACE_MAGIC, ItemTier.getMagicRecipe(WeaponsThornium.THORNIUM_MACE)).register(sup);
+    new AbstractWeapons(WeaponsThornium.THORNIUM_MACE_RARE, ItemTier.getRareRecipe(WeaponsThornium.THORNIUM_MACE_MAGIC)).register(sup);
+    new AbstractWeapons(WeaponsThornium.THORNIUM_MACE_EPIC, ItemTier.getEpicRecipe(WeaponsThornium.THORNIUM_MACE_RARE)).register(sup);
+    new AbstractWeapons(WeaponsThornium.THORNIUM_MACE_LEGENDARY, ItemTier.getLegendaryRecipe(WeaponsThornium.THORNIUM_MACE_EPIC)).register(sup);
+    new AbstractWeapons(WeaponsThornium.THORNIUM_MACE_SUPREME, ItemTier.getSupremeRecipe(WeaponsThornium.THORNIUM_MACE_LEGENDARY)).register(sup);
+    EnchantsAndEffectsUtil.addGearBasicEnchants(WeaponsBasic.TITANIUM_TRIDENT, WeaponsBasic.AURUM_TRIDENT,
+        WeaponsBasic.ADAMANTIUM_TRIDENT);
+    EnchantsAndEffectsUtil.addGearThorniumEnchants(WeaponsThornium.THORNIUM_TRIDENT, WeaponsThornium.THORNIUM_TRIDENT_MAGIC, WeaponsThornium.THORNIUM_TRIDENT_RARE, WeaponsThornium.THORNIUM_TRIDENT_EPIC, WeaponsThornium.THORNIUM_TRIDENT_LEGENDARY, WeaponsThornium.THORNIUM_TRIDENT_SUPREME);
+    new AbstractWeapons(WeaponsBasic.TITANIUM_TRIDENT, WeaponsBasic.RECIPE_TITANIUM_TRIDENT).register(sup);
+    new AbstractWeapons(WeaponsBasic.AURUM_TRIDENT, WeaponsBasic.RECIPE_AURUM_TRIDENT).register(sup);
+    new AbstractWeapons(WeaponsBasic.ADAMANTIUM_TRIDENT, WeaponsBasic.RECIPE_ADAMANTIUM_TRIDENT).register(sup);
+    new AbstractWeapons(WeaponsThornium.THORNIUM_TRIDENT, WeaponsThornium.RECIPE_THORNIUM_TRIDENT).register(sup);
+    new AbstractWeapons(WeaponsThornium.THORNIUM_TRIDENT_MAGIC, ItemTier.getMagicRecipe(WeaponsThornium.THORNIUM_TRIDENT)).register(sup);
+    new AbstractWeapons(WeaponsThornium.THORNIUM_TRIDENT_RARE, ItemTier.getRareRecipe(WeaponsThornium.THORNIUM_TRIDENT_MAGIC)).register(sup);
+    new AbstractWeapons(WeaponsThornium.THORNIUM_TRIDENT_EPIC, ItemTier.getEpicRecipe(WeaponsThornium.THORNIUM_TRIDENT_RARE)).register(sup);
+    new AbstractWeapons(WeaponsThornium.THORNIUM_TRIDENT_LEGENDARY, ItemTier.getLegendaryRecipe(WeaponsThornium.THORNIUM_TRIDENT_EPIC)).register(sup);
+    new AbstractWeapons(WeaponsThornium.THORNIUM_TRIDENT_SUPREME, ItemTier.getSupremeRecipe(WeaponsThornium.THORNIUM_TRIDENT_LEGENDARY)).register(sup);
+
     // spear set (Minecraft 1.21.11+)
     if (SpearSupport.isSupported()) {
       setupSpears(sup);

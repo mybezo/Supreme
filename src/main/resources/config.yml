@@ -391,6 +391,108 @@ supreme-enchant:
     fire_aspect: 20
     mending: 20
     lunge: 20
+  supreme_titanium_mace:
+    unbreakable: false
+    density: 5
+    unbreaking: 8
+  supreme_aurum_mace:
+    unbreakable: false
+    smite: 5
+    mending: 1
+  supreme_adamantium_mace:
+    unbreakable: false
+    density: 8
+    unbreaking: 10
+  supreme_mace_thornium:
+    unbreakable: true
+    density: 5
+    breach: 3
+    wind_burst: 1
+    fire_aspect: 3
+    mending: 7
+  supreme_mace_magic:
+    unbreakable: true
+    density: 8
+    breach: 4
+    wind_burst: 2
+    fire_aspect: 6
+    mending: 10
+  supreme_mace_rare:
+    unbreakable: true
+    density: 12
+    breach: 5
+    wind_burst: 2
+    fire_aspect: 8
+    mending: 10
+  supreme_mace_epic:
+    unbreakable: true
+    density: 16
+    breach: 6
+    wind_burst: 3
+    fire_aspect: 10
+    mending: 15
+  supreme_mace_legendary:
+    unbreakable: true
+    density: 20
+    breach: 8
+    wind_burst: 3
+    fire_aspect: 15
+    mending: 15
+  supreme_mace_supreme:
+    unbreakable: true
+    density: 25
+    breach: 10
+    wind_burst: 3
+    fire_aspect: 20
+    mending: 20
+  supreme_titanium_trident:
+    unbreakable: false
+    impaling: 8
+    unbreaking: 8
+  supreme_aurum_trident:
+    unbreakable: false
+    loyalty: 3
+    mending: 1
+  supreme_adamantium_trident:
+    unbreakable: false
+    impaling: 10
+    unbreaking: 10
+  supreme_trident_thornium:
+    unbreakable: true
+    impaling: 7
+    loyalty: 3
+    channeling: 1
+    mending: 7
+  supreme_trident_magic:
+    unbreakable: true
+    impaling: 16
+    loyalty: 3
+    channeling: 1
+    mending: 10
+  supreme_trident_rare:
+    unbreakable: true
+    impaling: 24
+    loyalty: 3
+    channeling: 1
+    mending: 10
+  supreme_trident_epic:
+    unbreakable: true
+    impaling: 33
+    loyalty: 4
+    channeling: 1
+    mending: 15
+  supreme_trident_legendary:
+    unbreakable: true
+    impaling: 40
+    loyalty: 4
+    channeling: 1
+    mending: 15
+  supreme_trident_supreme:
+    unbreakable: true
+    impaling: 50
+    loyalty: 5
+    channeling: 1
+    mending: 20
   supreme_bow_thornium:
     unbreakable: true
     power: 7

@@ -204,6 +204,16 @@ public class ElectricGearFabricator extends GenericMachine {
     list.add(new AbstractItemRecipe(ItemTier.getEpicRecipe(ToolsThornium.THORNIUM_FISHING_ROD_RARE), ToolsThornium.THORNIUM_FISHING_ROD_EPIC));
     list.add(new AbstractItemRecipe(ItemTier.getLegendaryRecipe(ToolsThornium.THORNIUM_FISHING_ROD_EPIC), ToolsThornium.THORNIUM_FISHING_ROD_LEGENDARY));
     list.add(new AbstractItemRecipe(ItemTier.getSupremeRecipe(ToolsThornium.THORNIUM_FISHING_ROD_LEGENDARY), ToolsThornium.THORNIUM_FISHING_ROD_SUPREME));
+    list.add(new AbstractItemRecipe(ItemTier.getMagicRecipe(WeaponsThornium.THORNIUM_MACE), WeaponsThornium.THORNIUM_MACE_MAGIC));
+    list.add(new AbstractItemRecipe(ItemTier.getRareRecipe(WeaponsThornium.THORNIUM_MACE_MAGIC), WeaponsThornium.THORNIUM_MACE_RARE));
+    list.add(new AbstractItemRecipe(ItemTier.getEpicRecipe(WeaponsThornium.THORNIUM_MACE_RARE), WeaponsThornium.THORNIUM_MACE_EPIC));
+    list.add(new AbstractItemRecipe(ItemTier.getLegendaryRecipe(WeaponsThornium.THORNIUM_MACE_EPIC), WeaponsThornium.THORNIUM_MACE_LEGENDARY));
+    list.add(new AbstractItemRecipe(ItemTier.getSupremeRecipe(WeaponsThornium.THORNIUM_MACE_LEGENDARY), WeaponsThornium.THORNIUM_MACE_SUPREME));
+    list.add(new AbstractItemRecipe(ItemTier.getMagicRecipe(WeaponsThornium.THORNIUM_TRIDENT), WeaponsThornium.THORNIUM_TRIDENT_MAGIC));
+    list.add(new AbstractItemRecipe(ItemTier.getRareRecipe(WeaponsThornium.THORNIUM_TRIDENT_MAGIC), WeaponsThornium.THORNIUM_TRIDENT_RARE));
+    list.add(new AbstractItemRecipe(ItemTier.getEpicRecipe(WeaponsThornium.THORNIUM_TRIDENT_RARE), WeaponsThornium.THORNIUM_TRIDENT_EPIC));
+    list.add(new AbstractItemRecipe(ItemTier.getLegendaryRecipe(WeaponsThornium.THORNIUM_TRIDENT_EPIC), WeaponsThornium.THORNIUM_TRIDENT_LEGENDARY));
+    list.add(new AbstractItemRecipe(ItemTier.getSupremeRecipe(WeaponsThornium.THORNIUM_TRIDENT_LEGENDARY), WeaponsThornium.THORNIUM_TRIDENT_SUPREME));
     if (SpearSupport.isSupported()) {
       list.add(new AbstractItemRecipe(ItemTier.getMagicRecipe(WeaponsSpear.THORNIUM_SPEAR), WeaponsSpear.THORNIUM_SPEAR_MAGIC));
       list.add(new AbstractItemRecipe(ItemTier.getRareRecipe(WeaponsSpear.THORNIUM_SPEAR_MAGIC), WeaponsSpear.THORNIUM_SPEAR_RARE));

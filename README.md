@@ -40,7 +40,7 @@ Magic, Rare, Epic, Legendary and **Supreme** tiers.
 - **Automation**: quarries, mob collector, virtual garden and virtual aquarium
 - **MobTech system**: collect, mutate and evolve mob "tech" heads to speed up machines
 - **12 generators and 5 capacitors**, each with its own placement rule
-- **Tiered gear**: swords, bows, shields, spears, pickaxes, axes, shovels, fishing rods and full armor sets
+- **Tiered gear**: swords, bows, shields, spears, maces, tridents, pickaxes, axes, shovels, fishing rods and full armor sets
 - **Translations**: English (`en-US`), Portuguese (`pt-BR`) and Simplified Chinese (`zh-CN`)
 - **Highly configurable**: enchantments, effects, power values, quarry output and more
 
@@ -160,7 +160,7 @@ All gear is crafted in the **Gear Fabricator** and is **Soulbound**. Thornium ge
 
 | Category | Items |
 |---|---|
-| **Weapons** | Sword, Spear¹, Bow², Shield² |
+| **Weapons** | Sword, Spear¹, Mace, Trident, Bow², Shield² |
 | **Tools** | Pickaxe, Axe, Shovel, Fishing Rod |
 | **Armor** | Helmet, Chestplate, Leggings, Boots |
 

@@ -410,6 +410,114 @@ items:
       - "&f&lA Supreme Spear of Thornium"
       - ""
       - "&3Supreme Weapons"
+  supreme_titanium_mace:
+    name: "&f&lTitanium Mace"
+    lore:
+      - "&f&lA Mace of Titanium"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_aurum_mace:
+    name: "&f&lAurum Mace"
+    lore:
+      - "&f&lA Mace of Aurum"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_adamantium_mace:
+    name: "&f&lAdamantium Mace"
+    lore:
+      - "&f&lA Mace of Adamantium"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_mace_thornium:
+    name: "&f&lThornium Mace"
+    lore:
+      - "&f&lA Mace of Thornium"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_mace_magic:
+    name: "&a&lMagic Mace"
+    lore:
+      - "&f&lA Magic Mace of Thornium"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_mace_rare:
+    name: "&b&lRare Mace"
+    lore:
+      - "&f&lA Rare Mace of Thornium"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_mace_epic:
+    name: "&d&lEpic Mace"
+    lore:
+      - "&f&lA Epic Mace of Thornium"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_mace_legendary:
+    name: "&6&lLegendary Mace"
+    lore:
+      - "&f&lA Legendary Mace of Thornium"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_mace_supreme:
+    name: "&4&lSupreme Mace"
+    lore:
+      - "&f&lA Supreme Mace of Thornium"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_titanium_trident:
+    name: "&f&lTitanium Trident"
+    lore:
+      - "&f&lA Trident of Titanium"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_aurum_trident:
+    name: "&f&lAurum Trident"
+    lore:
+      - "&f&lA Trident of Aurum"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_adamantium_trident:
+    name: "&f&lAdamantium Trident"
+    lore:
+      - "&f&lA Trident of Adamantium"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_trident_thornium:
+    name: "&f&lThornium Trident"
+    lore:
+      - "&f&lA Trident of Thornium"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_trident_magic:
+    name: "&a&lMagic Trident"
+    lore:
+      - "&f&lA Magic Trident of Thornium"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_trident_rare:
+    name: "&b&lRare Trident"
+    lore:
+      - "&f&lA Rare Trident of Thornium"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_trident_epic:
+    name: "&d&lEpic Trident"
+    lore:
+      - "&f&lA Epic Trident of Thornium"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_trident_legendary:
+    name: "&6&lLegendary Trident"
+    lore:
+      - "&f&lA Legendary Trident of Thornium"
+      - ""
+      - "&3Supreme Weapons"
+  supreme_trident_supreme:
+    name: "&4&lSupreme Trident"
+    lore:
+      - "&f&lA Supreme Trident of Thornium"
+      - ""
+      - "&3Supreme Weapons"
   supreme_adamantium_axe:
     name: "&f&lAdamantium Axe"
     lore:
