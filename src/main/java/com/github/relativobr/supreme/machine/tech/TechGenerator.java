@@ -8,6 +8,7 @@ import com.github.relativobr.supreme.machine.tech.MobTechGeneric.MobTechType;
 import com.github.relativobr.supreme.resource.SupremeComponents;
 import com.github.relativobr.supreme.resource.mobtech.MobTech;
 import com.github.relativobr.supreme.util.ItemGroups;
+import com.github.relativobr.supreme.util.ItemUtil;
 import com.github.relativobr.supreme.util.SupremeItemStack;
 import com.github.relativobr.supreme.util.UtilEnergy;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -108,11 +109,11 @@ public class TechGenerator extends SimpleItemContainerMachine implements Radioac
       ItemStack output) {
     SupremeItemStack.setMaxStackSize(item, CARD_MAX_STACK_SIZE);
     new UnplaceableBlock(ItemGroups.CARDS_CATEGORY, item, RecipeType.ENHANCED_CRAFTING_TABLE,
-        new ItemStack[]{new ItemStack(input1), new ItemStack(input2), new ItemStack(input1),
-            new ItemStack(input2),
-            getCardTier(tierCard), new ItemStack(input2), new ItemStack(input1),
-            new ItemStack(input2),
-            new ItemStack(input1)}).register(plugin);
+        new ItemStack[]{ItemUtil.copyOf(input1), ItemUtil.copyOf(input2), ItemUtil.copyOf(input1),
+            ItemUtil.copyOf(input2),
+            ItemUtil.copyOf(getCardTier(tierCard)), ItemUtil.copyOf(input2), ItemUtil.copyOf(input1),
+            ItemUtil.copyOf(input2),
+            ItemUtil.copyOf(input1)}).register(plugin);
     TechGenerator.addRecipesToProcess(item, output);
   }
 

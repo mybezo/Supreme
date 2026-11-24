@@ -206,7 +206,7 @@ public class RowItemGroup extends FlexItemGroup {
             if (item instanceof MultiBlockMachine) {
               Slimefun.getLocalization().sendMessage(pl, "guide.cheat.no-multiblocks");
             } else {
-              ItemStack clone = item.getItem().clone();
+              ItemStack clone = ItemUtil.copyOf(item.getItem());
               if (action.isShiftClicked()) {
                 clone.setAmount(clone.getMaxStackSize());
               }

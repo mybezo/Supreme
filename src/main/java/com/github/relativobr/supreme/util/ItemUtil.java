@@ -74,7 +74,7 @@ public class ItemUtil {
                     }
                     if (slimefunItem != null) {
                         outputItems.add(
-                                AbstractQuarryOutputItem.builder().itemStack(slimefunItem.getItem().clone())
+                                AbstractQuarryOutputItem.builder().itemStack(copyOf(slimefunItem.getItem()))
                                         .chance(getSupremeOptions().isLimitProductionQuarry() ? (chance / 2) : chance)
                                         .build());
                     }
@@ -287,4 +287,34 @@ public class ItemUtil {
         itemStack.setItemMeta(itemMeta);
         return itemStack;
     }
+
+  /**
+   * A plain copy of an item, safe to put in any inventory or recipe.
+   *
+   * <p>On Paper 26+ {@code new ItemStack(item)} copies by calling {@code item.clone()}: for a SlimefunItemStack
+   * that keeps a SlimefunItemStack inside the copy and the server fails to show it
+   * ("Cannot cast SlimefunItemStack to CraftItemStack"). This copy is built from the material and the meta.</p>
+   */
+  public static ItemStack copyOf(ItemStack item) {
+    if (item == null) {
+      return null;
+    }
+    ItemStack copy = new ItemStack(item.getType(), item.getAmount());
+    ItemMeta meta = item.getItemMeta();
+    if (meta != null) {
+      copy.setItemMeta(meta);
+    }
+    return copy;
+  }
+
+  /**
+   * {@link #copyOf(ItemStack)} with another amount.
+   */
+  public static ItemStack copyOf(ItemStack item, int amount) {
+    ItemStack copy = copyOf(item);
+    if (copy != null) {
+      copy.setAmount(amount);
+    }
+    return copy;
+  }
 }

@@ -14,6 +14,7 @@ import com.github.relativobr.supreme.machine.VirtualAquarium;
 import com.github.relativobr.supreme.machine.VirtualGarden;
 import com.github.relativobr.supreme.machine.tech.MobTechCollector;
 import com.github.relativobr.supreme.util.ItemGroups;
+import com.github.relativobr.supreme.util.ItemUtil;
 import com.github.relativobr.supreme.util.UtilEnergy;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -174,8 +175,7 @@ public class CompressedSetup {
     int previousMultiplier = 1;
     for (int multiplier : available) {
       SlimefunItemStack item = createItemStack(entry, original, values, multiplier);
-      ItemStack input = previous.clone();
-      input.setAmount(multiplier / previousMultiplier);
+      ItemStack input = ItemUtil.copyOf(previous, multiplier / previousMultiplier);
       ItemStack[] recipe = new ItemStack[9];
       recipe[0] = input;
 
@@ -202,7 +202,8 @@ public class CompressedSetup {
   @Nonnull
   private static SlimefunItemStack createItemStack(@Nonnull Entry entry, @Nonnull SlimefunItem original,
       @Nonnull int[] values, int multiplier) {
-    ItemStack item = original.getItem().clone();
+    // a plain copy: a cloned SlimefunItemStack inside the new SlimefunItemStack breaks it on Paper 26+
+    ItemStack item = ItemUtil.copyOf(original.getItem());
     ItemMeta meta = item.getItemMeta();
     if (meta != null) {
       String name = meta.hasDisplayName() ? meta.getDisplayName() : original.getItemName();
